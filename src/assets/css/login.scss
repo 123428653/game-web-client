@@ -1,0 +1,394 @@
+
+/* 登录、注册、忘记密码弹窗 */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #333;
+  border-radius: 30px;
+  border: 2px solid #333;
+  transition: all 0.2s;
+  outline: none !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.button-block {
+  width: 100%;
+}
+.button-primary {
+  background: #ef4406;
+  color: #fff;
+  border-color: #ef4406;
+}
+.dialogModal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    display: none;
+  }
+  .mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .dialogModalConent {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+    z-index: 1;
+    width: 310px;
+    background: #fff;
+    border-radius: 8px;
+    transition: all .3s;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .fade-down{
+      display: block;
+  }
+  .fade-down .dialogModalConent {
+    top: 8%;
+    opacity: 1;
+    visibility: visible;
+  }
+  .popHeader {
+    margin: 16px 24px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #dee2e6;
+  }
+  .loginClose {
+    width: 30px;
+    height: 30px;
+    background-image: url(https://pub-static-res.s3.us-east-2.amazonaws.com/web/static/images/close.png);
+    background-size: 30px auto;
+    display: inline-block;
+  }
+  .popTab {
+    display: flex;
+  }
+  .popTab .tabItem {
+    margin-bottom: -1px;
+  }
+  .popTab a{
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    font-size: 16px;
+    color: #566071;
+    text-decoration: none;
+  }
+  .popTab a.active{
+    border-color: #dee2e6 #dee2e6 #fff !important;
+    color: #ef4406;
+  }
+  .popTab a:hover {
+    border-color: #e9ecef #e9ecef #dee2e6;
+  }
+  .popBody {
+    padding: 10px 24px 30px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 64px;
+    margin-bottom: 0;
+    margin-top: 5px;
+    position: relative;
+  }
+  .form-group input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    height: 30px;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+    cursor: text;
+    z-index: 2;
+  }
+  .form-group label {
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #ccc;
+    transition: all .2s;
+  }
+  .form-group input:placeholder-shown + label{
+    transform: translate(0, 26px);
+    font-size: 16px;
+  }
+  .form-group input:focus + label{
+    color: #ef4406;
+    font-size: 12px;
+    transform: translate(0, 0);
+  }
+  .form-group input:focus {
+    border-color: #ef4406;
+    outline: none;
+  }
+  .button.getCodeBtn,
+  .codeTime {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 5px;
+    padding: 3px 0;
+    width: 103px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    -webkit-user-select: none;
+    display: none;
+  }
+  .codeTime {
+    background: #ddd;
+    color: #999;
+    padding: 10px 0;
+  }
+  .button.getCodeBtn {
+    cursor: pointer;
+    display: flex
+  }
+  .button.getCodeBtn[disabled] {
+    cursor: default;
+  }
+  .popBody .inputs {
+    margin-bottom: 40px;
+  }
+  .tabContent {
+    display: none;
+  }
+  .tabContent.active {
+    display: block;
+  }
+  .forgotPassword,
+  .backLogin {
+    padding-top: 24px;
+  }
+  .passwordIcon {
+    position: absolute;
+    right: 0;
+    bottom: 12px;
+    z-index: 2;
+    cursor: pointer;
+  }
+  .passwordIcon img{
+    width: 20px;
+    display: none;
+  }
+  .passwordIcon .hideIcon {
+    display: block
+  }
+  .showPassword .hideIcon {
+    display: none
+  }
+  .showPassword img.showIcon {
+    display: block;
+  }
+  .button .circularBox, .btn .circularBox{
+    display: none;
+  }
+  .button.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    cursor: default;
+  }
+  .button.loading .circularBox, .btn.loading .circularBox{
+    display: block;
+  }
+  .circularBox {
+    margin-bottom: 10px;
+    height: 35px;
+    display: inline-block;
+  }
+  .circular {
+    height: 35px;
+    width: 35px;
+    animation: loading-rotate 2s linear infinite
+  }
+  
+  .circular .path {
+    animation: loading-dash 1.5s ease-in-out infinite;
+    stroke-dasharray: 90,150;
+    stroke-dashoffset: 0;
+    stroke-width: 2;
+    stroke: #409eff;
+    stroke-linecap: round
+  }
+  @keyframes loading-rotate {
+    to {
+        transform: rotate(1turn)
+    }
+  }
+  
+  @keyframes loading-dash {
+    0% {
+        stroke-dasharray: 1,200;
+        stroke-dashoffset: 0
+    }
+  
+    50% {
+        stroke-dasharray: 90,150;
+        stroke-dashoffset: -40px
+    }
+  
+    to {
+        stroke-dasharray: 90,150;
+        stroke-dashoffset: -120px
+    }
+  }
+  /* 登录、注册、忘记密码弹窗 End */
+  
+  /* 顶部警告动画 */
+  @keyframes pulse {
+      from {
+          -webkit-transform: scale(0);
+          transform: scale(0)
+      }
+  
+      50% {
+          -webkit-transform: scale(1.05);
+          transform: scale(1.05)
+      }
+  
+      to {
+          -webkit-transform: scale(0);
+          transform: scale(0)
+      }
+  }
+  
+  /* 媒体查询 */
+  
+  /* min-lg */
+  @media (min-width:992px) {
+    .px-lg-4 {
+      padding: 0 4rem !important;
+    }
+    .py-md-12 {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+    .status-bar {
+      max-width: 400px;
+    }
+    .min-lg-block {
+      display: block !important;
+    }
+    .line-min-lg-center::after {
+      margin: 0.5rem 0 1.5rem !important;
+    }
+    
+    .section-day h3 {
+      font-size: 2rem !important;
+    }
+  }
+  
+  /* max-lg */
+  @media (max-width:992px) {
+    .btn-md-block {
+      display: block;
+    }
+    .box-md-center {
+      text-align: center;
+    }
+    .max-lg-3 {
+      margin-top: 2rem;
+    }
+  }
+  /* md */
+  @media (min-width:768px) {
+    .text-md-left {
+      text-align: left !important;
+      justify-content: flex-start;
+    }
+    .py-sm-7 {
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+    .md-flex-row-reverse {
+      flex-direction: row-reverse;
+    }
+    .footer{
+      text-align: left;
+    }
+    .footer h3{font-size:23px;}
+    .block-footer p{text-align: right;}
+    .mode h2 {
+      margin-bottom: .5rem;
+      letter-spacing: -1px;
+      font-size: 2.2rem;
+    }
+    .mode h3 {
+      font-size: 1.4rem;
+    }
+    /* 登录、注册、忘记密码 */
+    .form-group {
+      min-height: 72px;
+      margin-top: 15px;
+    }
+    .form-group input {
+      height: 40px;
+    }
+    .form-group input:placeholder-shown + label{
+      transform: translate(0, 36px);
+    }
+    
+  .form-group input:focus + label{
+    color: #ef4406;
+    font-size: 12px;
+    transform: translate(0, 0);
+  }
+    .button.getCodeBtn, .codeTime {
+      padding: 8px 0;
+      width: 116px;
+    }
+  
+    .dialogModalConent {
+      width: 500px!important
+    }
+    .company-copyright {
+      text-align: right;
+    }
+  }
+  
+  /* sm */
+  @media (max-width:768px) {
+    .btn-sm-block {
+      display: block;
+    }
+    .overflow-img {
+      width: 100%;
+    }
+    .user-info .isp,.user-info .location {
+      display: none;
+    }
+    .user-info > span {
+      margin-right: 0;
+    }
+    .accordion .card-til {
+      padding: 0.3rem 0;
+    }
+    .accordion-til .icon-down {
+      margin-right: 0.5rem;
+    }
+    .security-badge {
+      margin-top: 1rem;
+      text-align: left;
+    }
+    .cards {
+      width: 100%;
+      display: block;
+    }
+    .cards .cards-pays {
+      text-align: left;
+      margin-top: .5rem;
+    }
+  }
