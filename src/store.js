@@ -10,6 +10,7 @@ import {
   telCodeLogin
 } from '@/apis'
 import { sha1 } from '@/utils'
+import { setStorage } from '@/utils/storage'
 
 Vue.use(Vuex)
 
@@ -19,10 +20,15 @@ export default new Vuex.Store({
     showLogin: false,
     cssForgotShow: false,
     forgotShow: false,
+    loginTabs: ['Login', 'Register'],
+    loginActiveIndex: 0,
     register: {
       email: '',
       code: '',
       password: '',
+      time: 30,
+      isSendCode: false,
+      sendCodeLoading: false,
       isLoading: false
     },
     login: {
@@ -34,6 +40,9 @@ export default new Vuex.Store({
       email: '',
       code: '',
       password: '',
+      time: 30,
+      isSendCode: false,
+      sendCodeLoading: false,
       isLoading: false
     }
   },
@@ -41,12 +50,17 @@ export default new Vuex.Store({
     cssShow: state => state.cssShow,
     showLogin: state => state.showLogin,
     cssForgotShow: state => state.cssForgotShow,
+    loginTabs: state => state.loginTabs,
+    loginActiveIndex: state => state.loginActiveIndex,
     forgotShow: state => state.forgotShow,
     register: state => state.register,
     login: state => state.login,
     forgot: state => state.forgot
   },
   mutations: {
+    updateloginActiveIndex (state, index) {
+      state.loginActiveIndex = index
+    },
     updateShowLogin (state, flag) {
       if (flag) {
         state.cssShow = flag
@@ -75,9 +89,21 @@ export default new Vuex.Store({
     },
     updateLoading (state, { type, status }) {
       state[type].isLoading = status
+    },
+    updateIsSendCode (state, { type, status }) {
+      state[type].isSendCode = status
+    },
+    updateSendCodeLoading (state, { type, status }) {
+      state[type].sendCodeLoading = status
+    },
+    updateTime (state, { type, time }) {
+      state[type].time = time
     }
   },
   actions: {
+    loginActiveIndexAction ({ commit }, index) {
+      commit('updateloginActiveIndex', index)
+    },
     showLoginAction ({ commit }, flag) {
       commit('updateShowLogin', flag)
     },
@@ -91,17 +117,9 @@ export default new Vuex.Store({
         commit('updateShowLogin', true)
       }, 300)
     },
-    sendCodeApi ({ commit }, email) {
-      registerSendCode({
-        channel: 'email', // (String)获取code的 渠道。email/phone
-        type: 'register', // (String)获取code的 用途来下。reset(重置需要的验证码)/register(注册需要的验证码)/login(登录需要的验证码)
-        email
-      }).then(res => {
-        console.log('注册验证码', res)
-      })
-    },
-    registerApiAction ({ state, commit }) {
-      const { password, code, email } = state.register
+    registerApi ({ state, commit }, { goUser }) {
+      const { password, code, email, isLoading } = state.register
+      if (isLoading) return
       commit('updateLoading', { type: 'register', status: true })
       register({
         password: sha1(password), // (String)密码
@@ -109,21 +127,96 @@ export default new Vuex.Store({
         appId: 'zhanyi', // (String)平台发放给cp的appId，如果从cp处登录，那么会返回一个sign，用于cp去验证用户的有效性
         from: 'web', // (String)调用的平台：gi/cp/iossdk/androidsdk/web
         username: email // (String)邮箱
-      }).then(() => {
+      }).then((res) => {
         commit('updateLoading', { type: 'register', status: false })
-
+        const { token, tokenExpire, uuid, nickname, avatar, gender } = res.data
+        if (res.status !== 200) {
+          alert(res.message)
+        } else {
+          setStorage('Authorization', token, tokenExpire)
+          setStorage('userInfo', { uuid, nickname, avatar, gender }, tokenExpire)
+          // 跳转~~
+          commit('updateShowLogin', false)
+          commit('updateloginActiveIndex', 0)
+          goUser()
+        }
         console.log('注册成功回调')
       })
     },
-    loginApi () {
+    loginApi ({ commit, state }, { goUser }) {
+      const { password, email, isLoading } = state.login
+      if (isLoading) return
+      commit('updateLoading', { type: 'login', status: true })
       login({
         type: 4, // (Integer)common：type 1=facebook(firebase的方式)、2=google(firebase的方式)、3=phone(自己开发的)、4=email(自己开发的)、5=随机账号（自己开发的）；
-        password: '7c4a8d09ca3762af61e59520943dc26494f8941b', // 密码sha1
+        password: sha1(password), // 密码sha1
         appId: 'zhanyi', // (String)common：平台发放给cp的appId，如果从cp处登录，那么会返回一个sign，用于cp去验证用户的有效性
         from: 'web', // (String)common：gi/cp/iossdk/androidsdk/web
-        username: '362367886@qq.com' // (String)email/phone：账号，如果是email登录，这里就是email；如果是phone登录，这里是
-      }).then(() => {
+        username: email // (String)email/phone：账号，如果是email登录，这里就是email；如果是phone登录，这里是
+      }).then(res => {
+        commit('updateLoading', { type: 'login', status: false })
+        const { token, tokenExpire, uuid, nickname, avatar, gender } = res.data
+        if (res.status !== 200) {
+          alert(res.message)
+        } else {
+          setStorage('Authorization', token, tokenExpire)
+          setStorage('userInfo', { uuid, nickname, avatar, gender }, tokenExpire)
+          // 跳转~~
+          commit('updateShowLogin', false)
+          goUser()
+        }
         console.log('登录成功回调')
+      })
+    },
+    forgotApi ({ commit, state }) {
+      const { password, code, email, isLoading } = state.forgot
+      if (isLoading) return
+      commit('updateLoading', { type: 'forgot', status: true })
+      register({
+        password: sha1(password), // (String)密码
+        code, // (String)验证码
+        appId: 'zhanyi', // (String)平台发放给cp的appId，如果从cp处登录，那么会返回一个sign，用于cp去验证用户的有效性
+        from: 'web', // (String)调用的平台：gi/cp/iossdk/androidsdk/web
+        username: email // (String)邮箱
+      }).then(res => {
+        commit('updateLoading', { type: 'forgot', status: false })
+        if (res.status !== 200) {
+          alert(res.message)
+        } else {
+          commit('updateloginActiveIndex', 0)
+        }
+        console.log('重置密码回调')
+      })
+    },
+    sendCodeApi ({ commit, state }, { email, type }) {
+      if (state[type].sendCodeLoading) return
+      commit('updateSendCodeLoading', { type, status: true })
+      registerSendCode({
+        channel: 'email', // (String)获取code的 渠道。email/phone
+        type, // (String)获取code的 用途来下。reset(重置需要的验证码)/register(注册需要的验证码)/login(登录需要的验证码)
+        email
+      }).then(res => {
+        commit('updateSendCodeLoading', { type, status: false })
+        if (res.status === 200) {
+          let timer = null
+          console.log(state[type].time)
+          commit('updateIsSendCode', { type, status: true })
+          timer = setInterval(function () {
+            if (state[type].time > 1) {
+              commit('updateTime', { type, time: (--state[type].time) })
+            } else {
+              clearInterval(timer)
+              commit('updateIsSendCode', { type, status: false })
+              commit('updateTime', { type, time: 30 })
+            }
+          }, 1000)
+        } else {
+          alert(res.message)
+          commit('updateIsSendCode', { type, status: false })
+        }
+      }).catch(() => {
+        commit('updateSendCodeLoading', { type, status: false })
+        commit('updateIsSendCode', { type, status: false })
       })
     },
     bindTelApi () {
@@ -171,17 +264,17 @@ export default new Vuex.Store({
         console.log('绑定手机号码成功回调')
       })
     },
-    sendCodeAcstion ({ dispatch }, { vlidateEmail, email }) {
+    sendCodeAcstion ({ dispatch }, { vlidateEmail, email, type }) {
       vlidateEmail().then(status => {
         if (!status) {
           console.log('邮箱不对')
           return
         }
-        dispatch('sendCodeApi', email)
+        dispatch('sendCodeApi', { email, type })
         console.log('通过啦')
       })
     },
-    registerAction ({ dispatch }, all) {
+    registerAction ({ dispatch }, { all, goUser }) {
       console.log(11)
       Promise.all(all).then(result => {
         // 有一个组件未通过，就提示错误信息
@@ -189,13 +282,11 @@ export default new Vuex.Store({
           console.log('注册全部校验未通过')
           return
         }
-        dispatch('registerApiAction').then(res => {
-          console.log(res)
-        })
+        dispatch('registerApi', { goUser })
         console.log('注册全部校验通过')
       })
     },
-    loginAction ({ commit }, all) {
+    loginAction ({ dispatch }, { all, goUser }) {
       console.log(11)
       Promise.all(all).then(result => {
         // 有一个组件未通过，就提示错误信息
@@ -203,7 +294,18 @@ export default new Vuex.Store({
           console.log('全部校验未通过')
           return
         }
-
+        dispatch('loginApi', { goUser })
+        console.log('全部校验通过')
+      })
+    },
+    forgotAction ({ dispatch }, all) {
+      Promise.all(all).then(result => {
+        // 有一个组件未通过，就提示错误信息
+        if (result.indexOf(false) > -1) {
+          console.log('全部校验未通过')
+          return
+        }
+        dispatch('forgotApi')
         console.log('全部校验通过')
       })
     }

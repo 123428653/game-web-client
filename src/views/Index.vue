@@ -23,10 +23,12 @@
           <span>Media</span>
         </div>
       </div>
-      <a href="https://survey.163.com/htmls/2zqc23/paper.html" target class="nav-link">
-        <!-- đăng nhập -->
-        Trung tâm cá nhân
-      </a>
+      <router-link :to="token ? '/user' : '/'" class="nav-link">
+        {{token ? 'Trung tâm cá nhân' : 'đăng nhập'}}
+      </router-link>
+      <!-- <a href="https://survey.163.com/htmls/2zqc23/paper.html" class="nav-link">
+        {{token ? 'Trung tâm cá nhân' : 'đăng nhập'}}
+      </a> -->
     </div>
     <!-- <swiper id="J-page" class="swiper-container swiper-container-out swiper-container-vertical"> -->
     <swiper id="J-page" :options="swiperOption" class="swiper-container-out">
@@ -607,26 +609,23 @@
                               <div class="slide-content">
                                 <div class="intro-wrap">
                                   <div class="title-wrap">
-                                    <span class="title">창</span>
+                                    <span class="title">cửa sổ</span>
                                     <span class="sub-title"></span>
                                     <span class="line"></span>
                                   </div>
                                   <div class="intro">
                                     <div class="intro-item intro-item1">
-                                      <h3 class="intro-title">무기특성</h3>
+                                      <h3 class="intro-title">Đặc điểm vũ khí</h3>
                                       <div class="text">
-                                        <p>독특한 형태의 창.</p>
+                                        <p>Cửa sổ hình độc đáo.</p>
                                       </div>
                                       <span class="line"></span>
                                     </div>
                                     <div class="intro-item intro-item2">
-                                      <h3 class="intro-title">역사근원</h3>
+                                      <h3 class="intro-title">Lịch sử</h3>
                                       <div class="text">
                                         <p>
-                                          기존 장창에 비해 디자인이 복잡하다. 곡선 형태의 창끝 뒤에
-                                          날카로운 가시들이 박혀 있다.창끝으로 찌르고 창자루로 타격할 수
-                                          있으며 기술 응용 방식이 다양하다.돌격과 격투에서 모두 뛰어난
-                                          활약을 한다.
+                                          Thiết kế phức tạp hơn Changchang truyền thống. Có những cái gai sắc nhọn phía sau đầu cửa sổ cong, có thể chọc vào đầu cửa sổ, đánh bằng giáo và có nhiều ứng dụng kỹ thuật, cả tuyệt vời trong tấn công và chiến đấu.
                                         </p>
                                       </div>
                                       <span class="line"></span>
@@ -662,28 +661,26 @@
                               <div class="slide-content">
                                 <div class="intro-wrap">
                                   <div class="title-wrap">
-                                    <span class="title">단궁</span>
+                                    <span class="title">Tay ngắn</span>
                                     <span class="sub-title"></span>
                                     <span class="line"></span>
                                   </div>
                                   <div class="intro">
                                     <div class="intro-item intro-item1">
-                                      <h3 class="intro-title">무기특성</h3>
+                                      <h3 class="intro-title">Tay ngắn</h3>
                                       <div class="text">
                                         <p>
-                                          제작할 때 위력에 중점을 두는 장궁과 달리 단궁은 휴대성과 출격
-                                          속도를 중시한다.
+                                          Không giống như longbow, tập trung vào sức mạnh khi chế tạo, shortbow là di động và được xáo trộn. Tốc độ là quan trọng.
                                         </p>
                                       </div>
                                       <span class="line"></span>
                                     </div>
                                     <div class="intro-item intro-item2">
-                                      <h3 class="intro-title">역사근원</h3>
+                                      <h3 class="intro-title">Lịch sử</h3>
                                       <div class="text">
                                         <p>
-                                          이러한 이유로 단궁은 장궁보다 훨씬 더 간편하며 화살도 더 가볍다.
-                                          장궁은 초장거리 공격에 적합하지만 단궁은 비교적 가까운 곳을
-                                          끊임없이 지속적으로 공격하는 경향이 있다.경량 갑옷에 장착한다.
+                                          Vì lý do này, cung ngắn đơn giản hơn nhiều so với cung dài, và mũi tên nhẹ hơn.
+                                          Longbows rất tốt cho các cuộc tấn công tầm xa, nhưng shortbows có xu hướng liên tục tấn công các điểm tương đối gần, gắn trên áo giáp nhẹ.
                                         </p>
                                       </div>
                                       <span class="line"></span>
@@ -719,26 +716,23 @@
                               <div class="slide-content">
                                 <div class="intro-wrap">
                                   <div class="title-wrap">
-                                    <span class="title">야칼</span>
+                                    <span class="title">Yacal</span>
                                     <span class="sub-title"></span>
                                     <span class="line"></span>
                                   </div>
                                   <div class="intro">
                                     <div class="intro-item intro-item1">
-                                      <h3 class="intro-title">무기특성</h3>
+                                      <h3 class="intro-title">Đặc điểm vũ khí</h3>
                                       <div class="text">
-                                        <p>야성이 넘치는 야칼.</p>
+                                        <p>Yakal đầy hung dữ.</p>
                                       </div>
                                       <span class="line"></span>
                                     </div>
                                     <div class="intro-item intro-item2">
-                                      <h3 class="intro-title">역사근원</h3>
+                                      <h3 class="intro-title">Lịch sử</h3>
                                       <div class="text">
                                         <p>
-                                          4척~7척 길이에 활처럼 휘어진 칼 몸을 지녔으며 주로 도공
-                                          마스터들이 제작한다.야칼을 크게 휘두를 때면 그 모습이 마치
-                                          사신이 춤을 추는 것과 같아 적들이 숨을 죽인다.검술에 정통한
-                                          무사나 휘두를 수 있는 병기다.
+                                          Nó có chiều dài từ 4 đến 7 tàu với thân kiếm cong và chủ yếu được sản xuất bởi các bậc thầy gốm. Khi bạn vung một chiếc yaklar, có vẻ như một thợ gặt đang nhảy, và kẻ thù hít thở. Đó là một vũ khí có thể.
                                         </p>
                                       </div>
                                       <span class="line"></span>
@@ -774,25 +768,23 @@
                               <div class="slide-content">
                                 <div class="intro-wrap">
                                   <div class="title-wrap">
-                                    <span class="title">화승총</span>
+                                    <span class="title">lửa</span>
                                     <span class="sub-title"></span>
                                     <span class="line"></span>
                                   </div>
                                   <div class="intro">
                                     <div class="intro-item intro-item1">
-                                      <h3 class="intro-title">무기특성</h3>
+                                      <h3 class="intro-title">Đặc điểm vũ khí</h3>
                                       <div class="text">
-                                        <p>사나운 열병기 화승총</p>
+                                        <p>Súng nhiệt hung dữ Hwaseunggun</p>
                                       </div>
                                       <span class="line"></span>
                                     </div>
                                     <div class="intro-item intro-item2">
-                                      <h3 class="intro-title">역사근원</h3>
+                                      <h3 class="intro-title">Lịch sử</h3>
                                       <div class="text">
                                         <p>
-                                          철제보다 구리제가 더 많으며 대부분 파이프 형태를 띈다.엄청난
-                                          위력을 자랑하며 철사를 넣으면 유산탄을 발사할 수 있다.안정성은
-                                          높지 않지만 살상력만큼은 견줄 만한 무기가 없다.
+                                          Nó có nhiều đồng hơn sắt và hầu hết đều có hình dạng ống. Nó tự hào có sức mạnh khủng khiếp và có thể bắn lựu đạn khi bạn đặt nó vào. Nó không ổn định cao, nhưng không có vũ khí có thể so sánh với sức mạnh giết chóc.
                                         </p>
                                       </div>
                                       <span class="line"></span>
@@ -828,29 +820,25 @@
                               <div class="slide-content">
                                 <div class="intro-wrap">
                                   <div class="title-wrap">
-                                    <span class="title">쌍도</span>
+                                    <span class="title">Nhị nguyên</span>
                                     <span class="sub-title"></span>
                                     <span class="line"></span>
                                   </div>
                                   <div class="intro">
                                     <div class="intro-item intro-item1">
-                                      <h3 class="intro-title">무기특성</h3>
+                                      <h3 class="intro-title">Đặc điểm vũ khí</h3>
                                       <div class="text">
                                         <p>
-                                          단도는 가볍고 사용하기에 편리할 뿐더러 다양한 기술을 펼치는 데
-                                          용이하지만 교활하고 위력이 부족하다.
+                                          Dao găm là ánh sáng và thuận tiện để sử dụng, và nó dễ dàng mở ra các công nghệ khác nhau, nhưng nó là xảo quyệt và thiếu sức mạnh.
                                         </p>
                                       </div>
                                       <span class="line"></span>
                                     </div>
                                     <div class="intro-item intro-item2">
-                                      <h3 class="intro-title">역사근원</h3>
+                                      <h3 class="intro-title">Lịch sử</h3>
                                       <div class="text">
                                         <p>
-                                          쌍단도를 무기로 사용하려면 기이한 몸놀림과 침착한 인내심은
-                                          물론이고, 하나씩 완벽하게 준비해 습격하는 자세가 필요하다.
-                                          잠복을 원활하게 하기 위해서는 잡음이 나지 않는 착장과 안전하게
-                                          숨는 것이 가장 중요하다.경량 갑옷에 장착한다.
+                                          Để sử dụng thanh kiếm hai đầu làm vũ khí, không chỉ cần có những chuyển động cơ thể kỳ quái và sự kiên nhẫn bình tĩnh, mà còn phải chuẩn bị và tấn công từng người một cách hoàn hảo. Điều quan trọng nhất là phải có một giá đỡ không tiếng ồn và ẩn an toàn để làm mịn quá trình ủ của bạn.
                                         </p>
                                       </div>
                                       <span class="line"></span>
@@ -886,26 +874,23 @@
                               <div class="slide-content">
                                 <div class="intro-wrap">
                                   <div class="title-wrap">
-                                    <span class="title">장궁</span>
+                                    <span class="title">Cung</span>
                                     <span class="sub-title"></span>
                                     <span class="line"></span>
                                   </div>
                                   <div class="intro">
                                     <div class="intro-item intro-item1">
-                                      <h3 class="intro-title">무기특성</h3>
+                                      <h3 class="intro-title">Đặc điểm vũ khí</h3>
                                       <div class="text">
-                                        <p>안정적으로 활을 쏠 수 있는 장궁.</p>
+                                        <p>Longbow có thể bắn cung một cách ổn định.</p>
                                       </div>
                                       <span class="line"></span>
                                     </div>
                                     <div class="intro-item intro-item2">
-                                      <h3 class="intro-title">역사근원</h3>
+                                      <h3 class="intro-title">Lịch sử</h3>
                                       <div class="text">
                                         <p>
-                                          활 재질은 부드럽고 튼튼하며 탁월한 신축성을 지녔다. 반면 화살대는
-                                          평평하고 화살촉은 잎사귀 같다.백 보 밖에 있는 적을 저격할 수
-                                          있으며 원거리 전투에 적합하다.힘과 민첩함을 갖춘 사람만이 장궁의
-                                          진정한 위력을 발휘할 수 있다.
+                                          Chất liệu nơ mềm mại, cứng cáp và có độ đàn hồi tuyệt vời. Mặt khác, đầu mũi tên phẳng, đầu mũi tên có lá, chúng có thể bắn kẻ thù bên ngoài hàng trăm bước và phù hợp để chiến đấu tầm xa, và chỉ những người có sức mạnh và sự nhanh nhẹn mới có thể sử dụng sức mạnh thực sự của nỏ.
                                         </p>
                                       </div>
                                       <span class="line"></span>
@@ -941,26 +926,23 @@
                               <div class="slide-content">
                                 <div class="intro-wrap">
                                   <div class="title-wrap">
-                                    <span class="title">관도</span>
+                                    <span class="title">Kwando</span>
                                     <span class="sub-title"></span>
                                     <span class="line"></span>
                                   </div>
                                   <div class="intro">
                                     <div class="intro-item intro-item1">
-                                      <h3 class="intro-title">무기특성</h3>
+                                      <h3 class="intro-title">Đặc điểm vũ khí</h3>
                                       <div class="text">
-                                        <p>묵직한 힘을 발휘하는 관도.</p>
+                                        <p>Kwando thể hiện sức mạnh nặng nề.</p>
                                       </div>
                                       <span class="line"></span>
                                     </div>
                                     <div class="intro-item intro-item2">
-                                      <h3 class="intro-title">역사근원</h3>
+                                      <h3 class="intro-title">Lịch sử</h3>
                                       <div class="text">
                                         <p>
-                                          약간 휘어진 칼날에 길고 곧은 딱딱한 나무 자루로 만들어진 아주
-                                          예리한 긴 병기다.관도의 진정한 가치는 크게 휘둘러 베는 데
-                                          있다. 적군에게 자연스럽게 엄청난 충격을 가할 수 있다.강한 힘이
-                                          필요한 명장들에게 사랑받는 무기이다.
+                                          Nó là một vũ khí dài rất sắc bén được làm bằng bao tải gỗ dài, thẳng và cứng với lưỡi dao hơi cong. Nó tự nhiên có thể gây ra tác động to lớn đến kẻ thù, một vũ khí được yêu thích bởi các chỉ huy cần sức mạnh mạnh mẽ.
                                         </p>
                                       </div>
                                       <span class="line"></span>
@@ -996,25 +978,23 @@
                               <div class="slide-content">
                                 <div class="intro-wrap">
                                   <div class="title-wrap">
-                                    <span class="title">도순</span>
+                                    <span class="title">Liều dùng</span>
                                     <span class="sub-title"></span>
                                     <span class="line"></span>
                                   </div>
                                   <div class="intro">
                                     <div class="intro-item intro-item1">
-                                      <h3 class="intro-title">무기특성</h3>
+                                      <h3 class="intro-title">Đặc điểm vũ khí</h3>
                                       <div class="text">
-                                        <p>동쪽 전장에서 이름난 무기인 도순.</p>
+                                        <p>Dosun, một vũ khí nổi tiếng trên chiến trường phía đông.</p>
                                       </div>
                                       <span class="line"></span>
                                     </div>
                                     <div class="intro-item intro-item2">
-                                      <h3 class="intro-title">역사근원</h3>
+                                      <h3 class="intro-title">Lịch sử</h3>
                                       <div class="text">
                                         <p>
-                                          예리한 칼과 튼튼한 방패는 전장에서 아주 실용적인 조합이다.도보전에
-                                          적합하며, 여기에 중갑까지 갖춘다면 전장에서 생존률은 더 높아질
-                                          것이다.인상적인 무기 형상은 전사의 상징이 되었다.
+                                          Một thanh kiếm sắc bén và một chiếc khiên chắc chắn là sự kết hợp rất thiết thực trên chiến trường, thích hợp cho việc đi bộ và nếu được trang bị áo giáp hạng nặng, tỷ lệ sống sót sẽ cao hơn trên chiến trường. Hình dạng vũ khí ấn tượng đã trở thành biểu tượng của chiến binh.
                                         </p>
                                       </div>
                                       <span class="line"></span>
@@ -1066,24 +1046,6 @@
                           id="J-pagination-corps"
                           class="swiper-pagination pagination-corps swiper-pagination-clickable swiper-pagination-bullets"
                         >
-                          <div class="swiper-pagination-bullet swiper-pagination-bullet-active">
-                            <span>작은 방패류 부대</span>
-                          </div>
-                          <div class="swiper-pagination-bullet">
-                            <span>긴 자루류 부대</span>
-                          </div>
-                          <div class="swiper-pagination-bullet">
-                            <span>투창류 부대</span>
-                          </div>
-                          <div class="swiper-pagination-bullet">
-                            <span>원거리 부대</span>
-                          </div>
-                          <div class="swiper-pagination-bullet">
-                            <span>기병 계열 부대</span>
-                          </div>
-                          <div class="swiper-pagination-bullet">
-                            <span>등갑 계열 부대</span>
-                          </div>
                         </div>
                         <swiper
                           id="J-corps"
@@ -1097,53 +1059,49 @@
                               <div class="slide-content">
                                 <div class="intro-wrap corps-intro-1 corps-intro-show">
                                   <div class="title-wrap">
-                                    <span class="title">백월 산민</span>
+                                    <span class="title">Baekwol Sanmin</span>
                                   </div>
                                   <div class="intro">
                                     <div class="intro-left">
                                       <div class="intro-item intro-item-1">
-                                        <h3 class="intro-title">주요 행동</h3>
+                                        <h3 class="intro-title">Hoạt động chính</h3>
                                         <div class="text-wrap">
                                           <em>
-                                            목패 비석과 땔나무용 칼을 사용하여 전투에
-                                            참여합니다.
+                                            Tham gia vào các trận chiến bằng cách sử dụng bia mộ và dao củi.
                                           </em>
                                           <p>
-                                            갑옷을 입지 않았거나 경갑을 입은 적에게는 유효한 피해를
-                                            입힐 수 있으나 중등 이상의 갑옷 상대시 역부족합니다.
+                                            Bạn có thể gây sát thương hiệu quả cho kẻ địch không được trang bị hoặc bọc thép nhẹ, nhưng chúng không đủ tốt để đối phó với áo giáp thứ cấp hoặc cao hơn.
                                           </p>
-                                          <p>칼을 마구 휘두르며 쳬계적인 공격형식이 없습니다.</p>
-                                          <p>전체 목표를 선정하지 못하며 전술 구사 불가.</p>
+                                          <p>Không có hình thức tấn công phân cấp bằng cách cầm dao</p>
+                                          <p>Toàn bộ mục tiêu không thể được chọn và kỹ năng chiến thuật không thể được sử dụng.</p>
                                         </div>
                                       </div>
                                       <div class="intro-item intro-item-2">
-                                        <h3 class="intro-title">부대 특성</h3>
+                                        <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                         <div class="text-wrap">
                                           <em>채집 숙련가：</em>
                                           <p>
-                                            민병은 주로 전투 시에 자원을 제공하기 위한 농사와 채집을
-                                            합니다.
+                                            Dân quân chủ yếu là trang trại và tập hợp để cung cấp tài nguyên trong trận chiến.
                                           </p>
                                           <em>총알받이：</em>
                                           <p>
-                                            모집 편성 비용이 비교적 저렴하지만 전투력이 비교적 낮아
-                                            대부분 총알받이로 사용됩니다.
+                                            Mặc dù chi phí tuyển dụng tương đối thấp, sức mạnh chiến đấu tương đối thấp và hầu hết được sử dụng làm đạn.
                                           </p>
                                         </div>
                                       </div>
                                     </div>
                                     <div class="intro-right">
                                       <div class="intro-item intro-item-3">
-                                        <h3 class="intro-title">스킬</h3>
+                                        <h3 class="intro-title">kỹ năng</h3>
                                         <div class="text-wrap">
-                                          <em>약초:</em>
-                                          <p>약초를 사용하여 일정 시간 HP를 느리게 회복합니다.</p>
+                                          <em>dược liệu:</em>
+                                          <p>Các loại thảo mộc được sử dụng để từ từ hồi phục HP trong một khoảng thời gian.</p>
                                         </div>
                                       </div>
                                       <div class="intro-item intro-item-4">
-                                        <h3 class="intro-title">진형</h3>
+                                        <h3 class="intro-title">Sự hình thành</h3>
                                         <div class="text-wrap">
-                                          <em>산개진</em>
+                                          <em>núi</em>
                                           <div class="img">
                                             <i class="dot-1-1-1"></i>
                                           </div>
@@ -1154,21 +1112,19 @@
                                 </div>
                                 <div class="intro-wrap corps-intro-2">
                                   <div class="title-wrap">
-                                    <span class="title">낭산소 도순병</span>
+                                    <span class="title">Cystosis</span>
                                   </div>
                                   <div class="intro">
                                     <div class="intro-left">
                                       <div class="intro-item intro-item-1">
-                                        <h3 class="intro-title">주요 행동</h3>
+                                        <h3 class="intro-title">Hoạt động chính</h3>
                                         <div class="text-wrap">
                                           <em>
-                                            단거리 돌격을 수차례 진행함으로써 적의 진형을 무너뜨리는데
-                                            유능합니다.
+                                            Nó có hiệu quả trong việc phá vỡ đội hình của kẻ thù bằng cách tiến hành một số cuộc tấn công tầm ngắn.
                                             <p></p>
-                                            <p>돌격의 쿨타임 및 거리가 짧으며 속도가 빠릅니다.</p>
+                                            <p>Thời gian hồi chiêu và khoảng cách của cuộc tấn công ngắn và tốc độ nhanh.</p>
                                             <p>
-                                              진형을 짜서 단체 돌격은 뛰어나지만 각개 전투는
-                                              비교적으로 취약합니다.
+                                              Đội hình là tuyệt vời, nhưng mỗi trận chiến tương đối yếu.
                                             </p>
                                           </em>
                                         </div>
@@ -1176,17 +1132,15 @@
                                       </div>
                                       <div class="intro-item intro-item-2">
                                         <em>
-                                          <h3 class="intro-title">부대 특성</h3>
+                                          <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                           <div class="text-wrap">
-                                            <em>승승장구:</em>
-                                            <p>돌격 효과가 뛰어난 부대입니다.</p>
+                                            <em>Chiến thắng:</em>
+                                            <p>Nó là một đơn vị lực lượng tấn công xuất sắc.</p>
                                             <em>
-                                              함락
-                                              무쌍:
+                                              Ngã:
                                             </em>
                                             <p>
-                                              적진에 돌격하여 전투의 최전선에서 적을 공격하는 것에
-                                              능합니다.
+                                              Bạn rất giỏi trong việc tấn công kẻ thù và tấn công kẻ thù ở vị trí hàng đầu trong trận chiến.
                                             </p>
                                           </div>
                                         </em>
@@ -1196,19 +1150,18 @@
                                     <em>
                                       <div class="intro-right">
                                         <div class="intro-item intro-item-3">
-                                          <h3 class="intro-title">스킬</h3>
+                                          <h3 class="intro-title">kỹ năng</h3>
                                           <div class="text-wrap">
-                                            <em>돌격:</em>
+                                            <em>sạc điện:</em>
                                             <p>
-                                              거리가 멀지는 않지만 돌격 위력이 강력합니다.쿨타임이
-                                              짧습니다.
+                                              Khoảng cách không xa, nhưng sức tấn công mạnh mẽ, thời gian mát mẻ ngắn.
                                             </p>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-4">
-                                          <h3 class="intro-title">진형</h3>
+                                          <h3 class="intro-title">Sự hình thành</h3>
                                           <div class="text-wrap">
-                                            <em>산개진 충시진 순장진</em>
+                                            <em>Sangaejin Chungsijin Sunjangjin</em>
                                             <div class="img">
                                               <i class="dot-1-2-1"></i>
                                               <i class="dot-1-2-2"></i>
@@ -1224,68 +1177,60 @@
                                 <em>
                                   <div class="intro-wrap corps-intro-3">
                                     <div class="title-wrap">
-                                      <span class="title">척가군 돌격대</span>
+                                      <span class="title">Cuộc tấn công của Chuck</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-left">
                                         <div class="intro-item intro-item-1">
-                                          <h3 class="intro-title">주요 행동</h3>
+                                          <h3 class="intro-title">Hoạt động chính</h3>
                                           <div class="text-wrap">
                                             <em>
-                                              빠르게 적진으로 돌격해 적을 격추하는 것에
-                                              능합니다.
+                                              Bạn rất giỏi trong việc nhanh chóng tấn công kẻ thù và bắn hạ kẻ thù.
                                             </em>
-                                            <p>돌격 시 방패로 원거리 공격을 막는 것에 능숙합니다.</p>
-                                            <p>반신찰갑으로 상반신을 잘 보호할 수 있습니다.</p>
+                                            <p>Tốt trong việc ngăn chặn các cuộc tấn công tầm xa với khiên khi tấn công.</p>
+                                            <p>Bạn có thể bảo vệ phần thân trên của mình tốt với một bộ giáp nửa thân.</p>
                                             <em>
-                                              공격으로 다수의 적에게 피해를 입힐 수
-                                              있습니다.
+                                              Tấn công có thể gây sát thương cho nhiều kẻ thù.
                                             </em>
                                             <em>
-                                              속도가
-                                              빠릅니다.
+                                              Nó nhanh.
                                             </em>
                                             <em>
-                                              적 선정 시 원거리 공격과
-                                              장군을 우선으로 선정하는 전술을
-                                              구사합니다.
+                                              Khi chọn kẻ thù, họ sử dụng các đòn tấn công và chiến thuật tầm xa ưu tiên các tướng.
                                             </em>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-2">
-                                          <h3 class="intro-title">부대 특성</h3>
+                                          <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                           <div class="text-wrap">
-                                            <em>척가 도법：</em>
-                                            <p>척가 도법으로 적에게 피해를 입힐 수 있습니다.</p>
-                                            <em>모락 무쌍：</em>
+                                            <em>Chuck：</em>
+                                            <p>Chuck có thể gây sát thương lên kẻ thù bằng cách chiếu.</p>
+                                            <em>Một vô song：</em>
                                             <p>
-                                              적진으로 돌격하여 전투의 최전선에서 적을 공격하는
-                                              것에 능합니다.
+                                              Bạn rất giỏi trong việc tấn công kẻ thù và tấn công kẻ thù ở vị trí hàng đầu trong trận chiến.
                                             </p>
                                           </div>
                                         </div>
                                       </div>
                                       <div class="intro-right">
                                         <div class="intro-item intro-item-3">
-                                          <h3 class="intro-title">스킬</h3>
+                                          <h3 class="intro-title">kỹ năng</h3>
                                           <div class="text-wrap">
-                                            <em>돌격：</em>
+                                            <em>sạc điện：</em>
                                             <p>
-                                              돌격 위력이 강력하며 돌격 가능한 거리가
-                                              깁니다.쿨타임 보통.
-                                              <em>척가 도법：</em>
+                                              Sức mạnh của cuộc tấn công là mạnh mẽ và khoảng cách được tính phí là dài.
+                                              <em>Chuck：</em>
                                             </p>
                                             <p>
-                                              발동 후 일정 시간내 AOE 피해를 입힐 수
-                                              있습니다.
+                                              Thiệt hại AOE có thể xảy ra trong một khoảng thời gian nhất định.
                                             </p>
-                                            <em>장군 보호</em>
+                                            <em>Bảo vệ chung</em>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-4">
-                                          <h3 class="intro-title">진형</h3>
+                                          <h3 class="intro-title">Sự hình thành</h3>
                                           <div class="text-wrap">
-                                            <em>산개진 장군 보호진</em>
+                                            <em>Tướng núi</em>
                                             <div class="img">
                                               <i class="dot-1-3-1"></i>
                                               <i class="dot-1-3-2"></i>
@@ -1299,16 +1244,16 @@
                                     <div
                                       class="kv kv1"
                                       data-kv="1"
-                                      data-name1="백월 산민"
-                                      data-name2="낭산소 도순병"
-                                      data-name3="척가군 돌격대"
+                                      data-name1="Baekwol Sanmin"
+                                      data-name2="Cystosis"
+                                      data-name3="Cuộc tấn công của Chuck"
                                     ></div>
                                     <div class="switch-button-wrap">
                                       <div class="switch-button" data-thumb="2">
-                                        <p class="kv-name">낭산소 도순병</p>
+                                        <p class="kv-name">Cystosis</p>
                                       </div>
                                       <div class="switch-button" data-thumb="3">
-                                        <p class="kv-name">척가군 돌격대</p>
+                                        <p class="kv-name">Cuộc tấn công của Chuck</p>
                                       </div>
                                     </div>
                                   </div>
@@ -1324,53 +1269,48 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap corps-intro-1 corps-intro-show">
                                     <div class="title-wrap">
-                                      <span class="title">감주 변경 주민</span>
+                                      <span class="title">Gamju thay đổi cư dân</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-left">
                                         <div class="intro-item intro-item-1">
-                                          <h3 class="intro-title">주요 행동</h3>
+                                          <h3 class="intro-title">Hoạt động chính</h3>
                                           <div class="text-wrap">
-                                            <em>임시로 소집한 용병입니다.</em>
+                                            <em>Đây là một lính đánh thuê tạm thời.</em>
                                             <em>
-                                              날카롭게
-                                              깎은 나무막대를 들고 싸웁니다.
+                                              Chiến đấu với một cây cột gỗ cắt mạnh.
                                             </em>
                                             <p>
-                                              그들의 창은 갑옷을 입지 않았거나 경갑을 입은
-                                              병사에게는 유효하나, 중등 이상의 방어구에는 통하지
-                                              않습니다.
+                                              Những ngọn giáo của họ có giá trị đối với những người lính không được trang bị hoặc bọc thép nhẹ, nhưng chúng không hoạt động cho áo giáp thứ cấp hoặc cao hơn.
                                             </p>
                                             <p>
-                                              싸움 방식은 체계 없이 앞에 보이는 적을 마구
-                                              찌릅니다.
+                                              Phương pháp chiến đấu ném kẻ thù phía trước mà không có hệ thống.
                                             </p>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-2">
-                                          <h3 class="intro-title">부대 특성</h3>
+                                          <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                           <div class="text-wrap">
-                                            <em>특성 설명이 없습니다.</em>
+                                            <em>Không có mô tả tài sản.</em>
                                           </div>
                                         </div>
                                       </div>
                                       <div class="intro-right">
                                         <div class="intro-item intro-item-3">
-                                          <h3 class="intro-title">스킬</h3>
+                                          <h3 class="intro-title">kỹ năng</h3>
                                           <div class="text-wrap">
-                                            <em>스킬 없음 X</em>
+                                            <em>Không có kỹ năng X</em>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-4">
-                                          <h3 class="intro-title">진형</h3>
+                                          <h3 class="intro-title">Sự hình thành</h3>
                                           <div class="text-wrap">
-                                            <em>산개진</em>
+                                            <em>núi</em>
                                             <div class="img">
                                               <i class="dot-2-1-1"></i>
                                             </div>
                                             <p>
-                                              중기까지 내부 성장한 후 밀집한 횡렬진을 구사
-                                              가능합니다.
+                                              Sau khi phát triển bên trong cho đến giữa kỳ, có thể sử dụng các đường ngang dày đặc.
                                             </p>
                                           </div>
                                         </div>
@@ -1379,58 +1319,51 @@
                                   </div>
                                   <div class="intro-wrap corps-intro-2">
                                     <div class="title-wrap">
-                                      <span class="title">청서 창병 부대</span>
+                                      <span class="title">Spearmen cuốn sách màu xanh</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-left">
                                         <div class="intro-item intro-item-1">
-                                          <h3 class="intro-title">주요 행동</h3>
+                                          <h3 class="intro-title">Hoạt động chính</h3>
                                           <div class="text-wrap">
                                             <em>
-                                              비교적 많은 진형을 구사할 수 있으며 진형을
-                                              구축하여 바리케이드로 작전하는 것에
-                                              능합니다.
+                                              Tương đối nhiều đội hình có sẵn, và họ rất giỏi trong việc xây dựng các đội hình và vận hành như những chướng ngại vật.
                                             </em>
-                                            <p>진형을 구축한 상태에서 작전 능력이 뛰어납니다.</p>
-                                            <p>진형을 구축 속도가 빠릅니다.</p>
+                                            <p>Anh ấy có khả năng hoạt động tuyệt vời trong khi hình thành.</p>
+                                            <p>Tốc độ hình thành nhanh.</p>
                                             <p>
-                                              바리케이드 진형이 안정도가 높아 잘 부서지지
-                                              않습니다.
+                                              Sự hình thành chướng ngại vật ổn định và không dễ dàng phá vỡ.
                                             </p>
                                             <em>
-                                              각개 병사의 전투 실력이
-                                              부족하여 진형이 부서지면 작전 능력이
-                                              떨어집니다.
+                                              Kỹ năng chiến đấu của mỗi người lính là không đủ, vì vậy nếu đội hình của anh ta bị phá vỡ, khả năng hoạt động của anh ta sẽ giảm.
                                             </em>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-2">
-                                          <h3 class="intro-title">부대 특성</h3>
+                                          <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                           <div class="text-wrap">
-                                            <em>다양한 발전：</em>
+                                            <em>Sự phát triển khác nhau：</em>
                                             <p>
-                                              각종의 전술을 훈련할 수 있으며, 발전 방향이
-                                              다양합니다.
+                                              Chiến thuật khác nhau có thể được đào tạo và hướng phát triển rất đa dạng.
                                             </p>
-                                            <em>총알받이：</em>
+                                            <em>Đạn：</em>
                                             <p>
-                                              모집 편성 비용이 비교적 저렴하지만 전투력이 비교적
-                                              낮아 대부분 총알받이로 사용됩니다.
+                                              Mặc dù chi phí tuyển dụng tương đối thấp, sức mạnh chiến đấu tương đối thấp và hầu hết được sử dụng làm đạn.
                                             </p>
                                           </div>
                                         </div>
                                       </div>
                                       <div class="intro-right">
                                         <div class="intro-item intro-item-3">
-                                          <h3 class="intro-title">스킬</h3>
+                                          <h3 class="intro-title">kỹ năng</h3>
                                           <div class="text-wrap">
-                                            <em>바리케이드</em>
+                                            <em>rào chắn</em>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-4">
-                                          <h3 class="intro-title">진형</h3>
+                                          <h3 class="intro-title">Sự hình thành</h3>
                                           <div class="text-wrap">
-                                            <em>산개진 힁렬진</em>
+                                            <em>Rải rác</em>
                                             <div class="img">
                                               <i class="dot-2-2-1"></i>
                                               <i class="dot-2-2-2"></i>
@@ -1442,61 +1375,54 @@
                                   </div>
                                   <div class="intro-wrap corps-intro-3">
                                     <div class="title-wrap">
-                                      <span class="title">스위스 할버드병 부대</span>
+                                      <span class="title">Lực lượng bệnh Harvard Thụy Sĩ</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-left">
                                         <div class="intro-item intro-item-1">
-                                          <h3 class="intro-title">주요 행동</h3>
+                                          <h3 class="intro-title">Hoạt động chính</h3>
                                           <div class="text-wrap">
                                             <em>
-                                              창 끝으로는 찌르기, 도끼로는 베기 등 장창 활용
-                                              전술로 적을 공격하는 데에 능합니다.
+                                              Chúng rất giỏi trong việc tấn công kẻ thù bằng các chiến thuật dùng giáo như đâm vào cuối ngọn giáo và chém bằng rìu.
                                             </em>
                                             <p>
-                                              진형이 비교적 완화하여 장창병이 각개 격투 능력을
-                                              발휘하는데 편합니다.
+                                              Đội hình tương đối thoải mái, vì vậy thuận tiện cho những người lính ruột thể hiện khả năng chiến đấu của họ.
                                             </p>
-                                            <p>근거리 격투에 능합니다.</p>
+                                            <p>Tốt cho chiến đấu tầm ngắn.</p>
                                             <em>
-                                              중갑 유닛에
-                                              피해를 입힐 수 있습니다.
+                                              Có thể làm hỏng các đơn vị áo giáp hạng nặng.
                                             </em>
                                             <em>
-                                              기병과
-                                              조우 시 비교적 밀집한 방진을 펼쳐 바리케이트를
-                                              치며 대항하나 장창보다 효과가 뒤떨어집니다.
+                                              Trong các cuộc chạm trán của kỵ binh, một chất chống rung tương đối dày đặc lan truyền chống lại các chướng ngại vật, nhưng nó kém hiệu quả hơn một cây giáo.
                                             </em>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-2">
-                                          <h3 class="intro-title">부대 특성</h3>
+                                          <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                           <div class="text-wrap">
-                                            <em>반 기병 선봉대：</em>
+                                            <em>Đội tiên phong chống kỵ binh：</em>
                                             <p>
-                                              기병에 잘 대항하여 기병 병종에게 비교적 큰 피해를
-                                              입힙니다.
+                                              Chiến đấu tốt với kỵ binh, gây ra thiệt hại tương đối lớn cho kỵ binh.
                                             </p>
-                                            <em>폭렬 관통：</em>
+                                            <em>Sự xâm nhập bùng nổ：</em>
                                             <p>
-                                              적의 장갑을 관통해 방어도가 높은 적에게 유효한
-                                              피해를 입힙니다.
+                                              Xâm nhập áo giáp của kẻ thù, gây sát thương hiệu quả cho kẻ thù bằng áo giáp cao.
                                             </p>
                                           </div>
                                         </div>
                                       </div>
                                       <div class="intro-right">
                                         <div class="intro-item intro-item-3">
-                                          <h3 class="intro-title">스킬</h3>
+                                          <h3 class="intro-title">kỹ năng</h3>
                                           <div class="text-wrap">
-                                            <em>돌격</em>
-                                            <em>바리케이드</em>
+                                            <em>sạc điện</em>
+                                            <em>rào chắn</em>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-4">
-                                          <h3 class="intro-title">진형</h3>
+                                          <h3 class="intro-title">Sự hình thành</h3>
                                           <div class="text-wrap">
-                                            <em>산개진 방진</em>
+                                            <em>Bụi lan</em>
                                             <div class="img">
                                               <i class="dot-2-3-1"></i>
                                               <i class="dot-3-2-2"></i>
@@ -1516,10 +1442,10 @@
                                     ></div>
                                     <div class="switch-button-wrap">
                                       <div class="switch-button" data-thumb="2">
-                                        <p class="kv-name">청서 창병 부대</p>
+                                        <p class="kv-name">Spearmen cuốn sách màu xanh</p>
                                       </div>
                                       <div class="switch-button" data-thumb="3">
-                                        <p class="kv-name">스위스 할버드병 부대</p>
+                                        <p class="kv-name">Lực lượng bệnh Harvard Thụy Sĩ</p>
                                       </div>
                                     </div>
                                   </div>
@@ -1534,62 +1460,54 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap corps-intro-1 corps-intro-show">
                                     <div class="title-wrap">
-                                      <span class="title">하황 향군</span>
+                                      <span class="title">Hwang Hyang-súng</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-left">
                                         <div class="intro-item intro-item-1">
-                                          <h3 class="intro-title">주요 행동</h3>
+                                          <h3 class="intro-title">Hoạt động chính</h3>
                                           <div class="text-wrap">
                                             <em>
-                                              원거리 공격과 근거리 격투에 모두 능하나 근거리
-                                              격투에 특히 월등합니다.
+                                              Họ giỏi cả về chiến đấu tầm xa và tầm gần, nhưng đặc biệt giỏi trong chiến đấu tầm gần.
                                             </em>
                                             <p>
-                                              보유한 투창의 수가 적습니다. (2-3 개)투창
-                                              장사의 투척 사거리가 멀지는 않지만 강력한 위력
-                                              때문에 중량 갑옷을 꿰뚫을 수 있습니다.
+                                              Số lượng lao được tổ chức là nhỏ. (2-3 chiếc) Tầm ném của người ném bóng không xa, nhưng nhờ sức mạnh mạnh mẽ, nó có thể xuyên thủng lớp giáp nặng.
                                             </p>
                                             <p>
-                                              방패와 단창으로 작전하여 근거리 격투 능력이
-                                              도순보다는 조금 뒤떨어집니다.
+                                              Bằng cách hoạt động với khiên và giáo, khả năng chiến đấu cận chiến kém hơn một chút so với Do-sun.
                                             </p>
                                             <em>
-                                              투창
-                                              과정에서 적이 접근하면 근거리 격투 상태로 육탄전을
-                                              벌입니다.
+                                              Nếu kẻ địch tiếp cận trong khi đang trong quá trình javelin, nó sẽ tham gia vào một trận chiến đấu gần.
                                             </em>
                                             <em>
-                                              투창에 목적성이 없어 가장
-                                              가까이 있는 적에게 공격합니다.
+                                              Nó không có mục đích trong javelin và tấn công kẻ thù gần nhất.
                                             </em>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-2">
-                                          <h3 class="intro-title">부대 특성</h3>
+                                          <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                           <div class="text-wrap">
-                                            <em>용맹한 근접전:</em>
-                                            <p>근거리 격투 능력이 비교적 뛰어납니다.</p>
-                                            <em>한정 수량 중형 창:</em>
+                                            <em>Cận chiến:</em>
+                                            <p>Khả năng chiến đấu tầm gần tương đối tốt.</p>
+                                            <em>Số lượng trung bình:</em>
                                             <p>
-                                              투창 위력이 비교적 높지만 창의 수량이 매우
-                                              적습니다.
+                                              Sức mạnh của ngọn giáo tương đối cao, nhưng số lượng giáo rất ít.
                                             </p>
                                           </div>
                                         </div>
                                       </div>
                                       <div class="intro-right">
                                         <div class="intro-item intro-item-3">
-                                          <h3 class="intro-title">스킬</h3>
+                                          <h3 class="intro-title">kỹ năng</h3>
                                           <div class="text-wrap">
-                                            <em>투창:</em>
-                                            <p>앞에 있는 적에게 투창합니다.</p>
+                                            <em>Búa:</em>
+                                            <p>Để kẻ thù ở phía trước.</p>
                                           </div>
                                         </div>
                                         <div class="intro-item intro-item-4">
-                                          <h3 class="intro-title">진형</h3>
+                                          <h3 class="intro-title">Sự hình thành</h3>
                                           <div class="text-wrap">
-                                            <em>산개진 횡렬진</em>
+                                            <em>Rải rác</em>
                                             <div class="img">
                                               <i class="dot-3-1-1"></i>
                                               <i class="dot-3-1-2"></i>
@@ -1602,58 +1520,47 @@
                                   </div>
                                   <div class="intro-wrap corps-intro-2">
                                     <div class="title-wrap">
-                                      <span class="title">귀향 패수</span>
+                                      <span class="title">Trở về nhà</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-left">
                                         <div class="intro-item intro-item-1">
-                                          <h3 class="intro-title">주요 행동</h3>
+                                          <h3 class="intro-title">Hoạt động chính</h3>
                                           <div class="text-wrap">
                                             <em>
-                                              쉬운 횡렬진으로 정면을 봉쇄하고 대원들을
-                                              엄호합니다.
+                                              Chặn phía trước và che cho phi hành đoàn với vệt dễ dàng.
                                             </em>
                                             <em>
-                                              산개진 상태에서는 매우
-                                              취약하고 작전 능력 기능을
-                                              상실합니다.
+                                              Nó rất dễ bị tổn thương và mất khả năng hoạt động trong địa hình mở.
                                             </em>
                                             <em>
-                                              방패가 파괴된 후 방어
-                                              구사 능력이 현저히 떨어집니다.
+                                              Sau khi khiên bị phá hủy, khả năng phòng thủ bị giảm đáng kể.
                                             </em>
                                             <em>
-                                              대열
-                                              정렬 속도가 비교적
-                                              느립니다.
+                                              Sắp xếp các hàng tương đối chậm.
                                             </em>
                                             <em>
-                                              뒤쪽에서 공격당하는 것에
-                                              취약합니다.
+                                              Dễ bị tấn công từ phía sau.
                                             </em>
                                             <em>
-                                              공격 능력이 매우
-                                              떨어집니다./em&gt;
+                                              Khả năng tấn công rất kém./em&gt;
                                             </em>
                                           </div>
                                           <em></em>
                                         </div>
                                         <div class="intro-item intro-item-2">
                                           <em>
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                             <div class="text-wrap">
-                                              <em>정면 방어:</em>
+                                              <em>Phòng thủ mặt trận:</em>
                                               <p>
-                                                정면 방패의 방어력이 뛰어나지만 뒤쪽 방어는
-                                                비교적 취약합니다.
+                                                Các lá chắn phía trước rất phòng thủ, nhưng phòng thủ phía sau tương đối yếu.
                                               </p>
                                               <em>
-                                                백어택
-                                                약점:
+                                                Điểm yếu tấn công trở lại:
                                               </em>
                                               <p>
-                                                뒤쪽 공격을 당할 시 더 많은 피해를
-                                                받습니다.
+                                                Các cuộc tấn công trở lại có nhiều thiệt hại.
                                               </p>
                                             </div>
                                           </em>
@@ -1663,15 +1570,15 @@
                                       <em>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kỹ năng</h3>
                                             <div class="text-wrap">
-                                              <em>스킬이 없습니다</em>
+                                              <em>Không có kỹ năng</em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>순장진</em>
+                                              <em>Jang Jang Jin</em>
                                               <div class="img">
                                                 <i class="dot-3-2-1"></i>
                                               </div>
@@ -1685,76 +1592,64 @@
                                   <em>
                                     <div class="intro-wrap corps-intro-3">
                                       <div class="title-wrap">
-                                        <span class="title">백산흑수 철부도</span>
+                                        <span class="title">Baeksan Nước đen Cheolbudo</span>
                                       </div>
                                       <div class="intro">
                                         <div class="intro-left">
                                           <div class="intro-item intro-item-1">
-                                            <h3 class="intro-title">주요 행동</h3>
+                                            <h3 class="intro-title">Hoạt động chính</h3>
                                             <div class="text-wrap">
                                               <em>
-                                                분산하여 적군에게 돌격해 AOE 데미지
-                                                피해를 입히는 데
-                                                능합니다.
+                                                Phân tán và có khả năng tấn công quân địch và gây sát thương AOE.
                                               </em>
                                               <em>
-                                                삼단진을 쳐서
-                                                충돌능력을 강화하여 방어진을 치고 있는
-                                                적군부대의 돌파구를
-                                                만듭니다.
+                                                Tấn công một đội để tăng cường khả năng va chạm để tạo ra một bước đột phá của quân địch đánh vào đội phòng thủ.
                                               </em>
                                               <em>
-                                                진형을 구사하여
-                                                진형 방어 작전에 능합니다.
+                                                Anh ấy giỏi trong việc bảo vệ đội hình bằng cách sử dụng đội hình.
                                               </em>
                                               <p>
-                                                회원진, 횡렬진 등 다양한 방어 진형을 구사
-                                                가능하며, 방어진을 유지합니다.
+                                                Một loạt các đội hình phòng thủ, chẳng hạn như các đội thành viên và đội hình, có sẵn, và đội phòng thủ được duy trì.
                                               </p>
                                               <em>
-                                                도리깨로 적을 넉백시키며, 데미지 피해를
-                                                입힙니다.
+                                                Con sáo đánh bật kẻ thù trở lại, gây sát thương.
                                               </em>
                                               <em>
-                                                장검으로 적에게
-                                                관통 및 막대한 피해를 입힙니다.
+                                                Những thanh kiếm dài xuyên thấu và gây sát thương lớn cho kẻ thù.
                                               </em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-2">
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                             <div class="text-wrap">
-                                              <em>양용 무기:</em>
+                                              <em>Vũ khí hai chiều:</em>
                                               <p>
-                                                두 가지 무기를 가지고 있으며, 상황에 맞게
-                                                사용합니다.
+                                                Nó có hai vũ khí và nó được sử dụng theo tình hình.
                                               </p>
-                                              <em>둔기 충격</em>
-                                              <p>둔기로 적을 강타하여 데미지 피해를 입힙니다.</p>
-                                              <em>특제 중갑:</em>
+                                              <em>Sốc cùn</em>
+                                              <p>Tấn công kẻ thù bằng sát thương cùn, gây sát thương.</p>
+                                              <em>Áo giáp hạng nặng:</em>
                                               <p>
-                                                두꺼운 갑옷을 입어 방어능력이 비교적
-                                                높습니다.
+                                                Bộ giáp tương đối cao với áo giáp dày.
                                               </p>
-                                              <em>신중하게 진군:</em>
+                                              <em>Tiến lên cẩn thận:</em>
                                               <p>
-                                                기동성이 비교적 낮아 빠르게 진입할 수
-                                                없습니다.
+                                                Tính cơ động của nó tương đối thấp, vì vậy nó không thể vào nhanh.
                                               </p>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kỹ năng</h3>
                                             <div class="text-wrap">
-                                              <em>스킬이 없습니다.</em>
+                                              <em>Không có kỹ năng.</em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>산개진 횡렬진 충시진</em>
+                                              <em>Suối núi</em>
                                               <div class="img">
                                                 <i class="dot-3-3-1"></i>
                                                 <i class="dot-3-3-2"></i>
@@ -1769,16 +1664,16 @@
                                       <div
                                         class="kv kv3"
                                         data-kv="1"
-                                        data-name1="하황 향군"
-                                        data-name2="귀향 패수"
-                                        data-name3="백산흑수 철부도"
+                                        data-name1="Hwang Hyang-súng"
+                                        data-name2="Trở về nhà"
+                                        data-name3="Baeksan Nước đen Cheolbudo"
                                       ></div>
                                       <div class="switch-button-wrap">
                                         <div class="switch-button" data-thumb="2">
-                                          <p class="kv-name">귀향 패수</p>
+                                          <p class="kv-name">Trở về nhà</p>
                                         </div>
                                         <div class="switch-button" data-thumb="3">
-                                          <p class="kv-name">백산흑수 철부도</p>
+                                          <p class="kv-name">Baeksan Nước đen Cheolbudo</p>
                                         </div>
                                       </div>
                                     </div>
@@ -1796,66 +1691,57 @@
                                   <div class="slide-content">
                                     <div class="intro-wrap corps-intro-1 corps-intro-show">
                                       <div class="title-wrap">
-                                        <span class="title">노르만 석궁수</span>
+                                        <span class="title">Nỏ Norman</span>
                                       </div>
                                       <div class="intro">
                                         <div class="intro-left">
                                           <div class="intro-item intro-item-1">
-                                            <h3 class="intro-title">주요 행동</h3>
+                                            <h3 class="intro-title">Hoạt động chính</h3>
                                             <div class="text-wrap">
                                               <em>
-                                                손으로 석궁을 다루기 때문에 석궁의 위력은
-                                                낮은 편입니다.
+                                                Sức mạnh của nỏ thấp vì bạn đang xử lý nỏ bằng tay.
                                               </em>
-                                              <p>사거리가 짧습니다.</p>
+                                              <p>Phạm vi là ngắn.</p>
                                               <p>
-                                                관통 능력이 나쁘지 않고 종갑 적군에게 위협이
-                                                됩니다.
+                                                Khả năng thâm nhập không phải là xấu và đe dọa kẻ thù cuối cùng.
                                               </p>
                                               <em>
-                                                장전 속도가 비교적
-                                                빠릅니다.
+                                                Tốc độ tải tương đối nhanh.
                                               </em>
                                               <em>
-                                                정확도가 비교적
-                                                낮습니다.
+                                                Độ chính xác tương đối thấp.
                                               </em>
                                               <em>
-                                                근거리 격투 능력을
-                                                가지고 있지 않습니다.
+                                                Không có khả năng chiến đấu tầm gần.
                                               </em>
                                               <em>
-                                                높은
-                                                곳에서 아래를 향해 사격할 시 사격 능력은
-                                                상당히 출중하나 포물선 사격 능력은 갖추지
-                                                못하고 있습니다..
+                                                Khi bắn từ điểm cao trở xuống, khả năng bắn là nổi bật, nhưng khả năng bắn parabol không được trang bị.
                                               </em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-2">
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                             <div class="text-wrap">
-                                              <em>직선 사격:</em>
-                                              <p>포물선 사격능력 부족.</p>
+                                              <em>Lửa thẳng:</em>
+                                              <p>Thiếu khả năng chụp parabol.</p>
                                               <em>
-                                                산란
-                                                사격:
+                                                Sinh sản lửa:
                                               </em>
-                                              <p>사격 정확도가 비교적 낮습니다.</p>
+                                              <p>Độ chính xác chụp tương đối thấp.</p>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kỹ năng</h3>
                                             <div class="text-wrap">
-                                              <em>지정 사격</em>
+                                              <em>Chỉ định chữa cháy</em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>산개진 삼단진 일제 사격진</em>
+                                              <em>Đội bắn súng Sanggyejin Samdanjin Nhật Bản</em>
                                               <div class="img">
                                                 <i class="dot-4-1-1"></i>
                                                 <i class="dot-4-1-2"></i>
@@ -1868,59 +1754,54 @@
                                     </div>
                                     <div class="intro-wrap corps-intro-2">
                                       <div class="title-wrap">
-                                        <span class="title">전서 단련 궁수</span>
+                                        <span class="title">Cung thủ được đào tạo Jeonseo</span>
                                       </div>
                                       <div class="intro">
                                         <div class="intro-left">
                                           <div class="intro-item intro-item-1">
-                                            <h3 class="intro-title">주요 행동</h3>
+                                            <h3 class="intro-title">Hoạt động chính</h3>
                                             <div class="text-wrap">
-                                              <em>사격 훈련을 얼마 받지 못했습니다.</em>
-                                              <p>사거리가 짧고 정확도가 낮습니다.</p>
+                                              <em>Tôi chưa được huấn luyện về lửa.</em>
+                                              <p>Tầm ngắn và độ chính xác thấp.</p>
                                               <p>
-                                                화살을 마구 사격할 줄만 알고 정확히 사격하는
-                                                능력은 부족합니다.
+                                                Nó thiếu khả năng biết chính xác cách bắn một mũi tên và bắn chính xác.
                                               </p>
                                               <p>
-                                                조준할 필요가 없어서 사격 속도가 비교적
-                                                빠릅니다.
+                                                Không cần phải nhắm, nên tốc độ bắn tương đối nhanh.
                                               </p>
                                               <p>
-                                                근거리 격투는 불가능하며 적과 근접 전투시
-                                                도망칩니다.
+                                                Chiến đấu cận chiến là không thể, và bạn bỏ chạy trong trận chiến gần với kẻ thù.
                                               </p>
                                               <em>
-                                                인원수가 비교적
-                                                많습니다.
+                                                Số lượng người tương đối lớn.
                                               </em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-2">
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                             <div class="text-wrap">
-                                              <em>집단 작전:</em>
-                                              <p>편제 인원수가 비교적 많습니다.</p>
-                                              <em>미약한 관통:</em>
+                                              <em>Hoạt động tập thể:</em>
+                                              <p>Số lượng tổ chức tương đối lớn.</p>
+                                              <em>Thâm nhập yếu:</em>
                                               <p>
-                                                관통 능력이 비교적 낮으며, 경갑 유닛에게만
-                                                유효 피해를 입힐 수 있습니다.
+                                                Sự thâm nhập tương đối thấp, và chỉ có thể gây sát thương hiệu quả cho các đơn vị bọc thép.
                                               </p>
-                                              <em>운명적 사격:</em>
-                                              <p>사격 정확도가 매우 낮습니다.</p>
+                                              <em>Bắn định mệnh:</em>
+                                              <p>Độ chính xác chụp rất thấp.</p>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kỹ năng</h3>
                                             <div class="text-wrap">
-                                              <em>스킬이 없습니다.</em>
+                                              <em>Không có kỹ năng.</em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>산개진 어린진 익진</em>
+                                              <em>Bộ dạng cánh mảng nhỏ</em>
                                               <div class="img">
                                                 <i class="dot-4-2-1"></i>
                                                 <i class="dot-4-2-2"></i>
@@ -1933,57 +1814,52 @@
                                     </div>
                                     <div class="intro-wrap corps-intro-3">
                                       <div class="title-wrap">
-                                        <span class="title">천웅 신궁영</span>
+                                        <span class="title">Chu thần thông</span>
                                       </div>
                                       <div class="intro">
                                         <div class="intro-left">
                                           <div class="intro-item intro-item-1">
-                                            <h3 class="intro-title">주요 행동</h3>
+                                            <h3 class="intro-title">Hoạt động chính</h3>
                                             <div class="text-wrap">
                                               <em>
-                                                무거운 콤파운드 리커브 궁을
-                                                사용합니다.
+                                                Sử dụng hợp chất nặng tái diễn.
                                               </em>
-                                              <p>사격 빈도가 비교적 낮습니다.</p>
+                                              <p>Tần suất bắn tương đối thấp.</p>
                                               <p>
-                                                삼각뿔로 이루어진 날카로운 화살의 관통력이
-                                                매우 높고 피해량도 높습니다.
+                                                Một mũi tên sắc nhọn làm bằng kim tự tháp hình tam giác có sức xuyên thấu rất cao và sát thương cao.
                                               </p>
                                               <p>
-                                                무거운 화살로 인하여 사거리가 비교적
-                                                짧습니다.
+                                                Phạm vi tương đối ngắn do mũi tên nặng.
                                               </p>
                                               <em>
-                                                근거리 전투 능력을
-                                                가지고 있지 않습니다.
+                                                Không có khả năng chiến đấu tầm gần.
                                               </em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-2">
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                             <div class="text-wrap">
-                                              <em>정확한 사격:</em>
-                                              <p>사격 정확도가 비교적 높습니다.</p>
-                                              <em>관통 화살:</em>
+                                              <em>Chụp chính xác:</em>
+                                              <p>Độ chính xác chụp tương đối cao.</p>
+                                              <em>Mũi tên thâm nhập:</em>
                                               <p>
-                                                특제의 관통 화살이 중갑을 꿰뚫고 피해를 입힐
-                                                수 있습니다.
+                                                Mũi tên xuyên đặc biệt có thể xuyên qua áo giáp hạng nặng và gây sát thương.
                                               </p>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kỹ năng</h3>
                                             <div class="text-wrap">
-                                              <em>지정 사격</em>
-                                              <em>관통 화살</em>
+                                              <em>Chỉ định chữa cháy</em>
+                                              <em>Mũi tên thâm nhập</em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>산개진 어린진</em>
+                                              <em>Miền núi</em>
                                               <div class="img">
                                                 <i class="dot-4-3-1"></i>
                                                 <i class="dot-4-3-2"></i>
@@ -1998,15 +1874,15 @@
                                         class="kv kv4"
                                         data-kv="1"
                                         data-name1="노르만 석궁수"
-                                        data-name2="전서 단련 궁수"
-                                        data-name3="천웅 신궁영"
+                                        data-name2="Cung thủ được đào tạo Jeonseo"
+                                        data-name3="Chu thần thông"
                                       ></div>
                                       <div class="switch-button-wrap">
                                         <div class="switch-button" data-thumb="2">
-                                          <p class="kv-name">전서 단련 궁수</p>
+                                          <p class="kv-name">Cung thủ được đào tạo Jeonseo</p>
                                         </div>
                                         <div class="switch-button" data-thumb="3">
-                                          <p class="kv-name">천웅 신궁영</p>
+                                          <p class="kv-name">Chu thần thông</p>
                                         </div>
                                       </div>
                                     </div>
@@ -2023,41 +1899,39 @@
                                   <div class="slide-content">
                                     <div class="intro-wrap corps-intro-1 corps-intro-show">
                                       <div class="title-wrap">
-                                        <span class="title">고밀 궁마대</span>
+                                        <span class="title">Một vòm dày đặc</span>
                                       </div>
                                       <div class="intro">
                                         <div class="intro-left">
                                           <div class="intro-item intro-item-1">
-                                            <h3 class="intro-title">주요 행동</h3>
+                                            <h3 class="intro-title">Hoạt động chính</h3>
                                             <div class="text-wrap">
                                               <em>
-                                                안전 구역까지 진행한 후 보조적인 사격을
-                                                발동합니다.
+                                                Tiến tới khu vực an toàn và kích hoạt đám cháy phụ trợ.
                                               </em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-2">
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                             <div class="text-wrap">
-                                              <em>기동 유격</em>
+                                              <em>Điều động</em>
                                               <em>
-                                                빠른
-                                                기동성
+                                                Khả năng cơ động nhanh
                                               </em>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kỹ năng</h3>
                                             <div class="text-wrap">
-                                              <em>스킬이 없습니다</em>
+                                              <em>Không có kỹ năng</em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>완화 방진 학익진</em>
+                                              <em>Giảm nhẹ</em>
                                               <div class="img">
                                                 <i class="dot-5-1-1"></i>
                                                 <i class="dot-5-1-2"></i>
@@ -2069,58 +1943,51 @@
                                     </div>
                                     <div class="intro-wrap corps-intro-2">
                                       <div class="title-wrap">
-                                        <span class="title">유림 표기장군영</span>
+                                        <span class="title">Ký hiệu Yurim</span>
                                       </div>
                                       <div class="intro">
                                         <div class="intro-left">
                                           <div class="intro-item intro-item-1">
-                                            <h3 class="intro-title">주요 행동</h3>
+                                            <h3 class="intro-title">Hoạt động chính</h3>
                                             <div class="text-wrap">
                                               <em>
-                                                삼단진(3줄)으로 밀집한 돌격을 진행하고
-                                                기병창으로 적을 찌르고
-                                                넉백시킵니다.
+                                                Thực hiện một cuộc tấn công dày đặc với ba bước (3 đường) và đâm và hạ gục kẻ thù bằng một ngọn giáo kỵ binh.
                                               </em>
                                               <em>
-                                                적에게 접근한
-                                                후 진형을 흐트리는것을 주요 목적으로
-                                                합니다.
+                                                Mục đích chính của nó là làm mờ đội hình sau khi tiếp cận kẻ thù.
                                               </em>
                                               <em>
-                                                돌격 후 방향을
-                                                돌리는 것에 비교적 긴 시간이 걸립니다.
+                                                Phải mất một thời gian tương đối dài để biến sau cuộc tấn công.
                                               </em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-2">
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                             <div class="text-wrap">
-                                              <em>혈전 기병:</em>
+                                              <em>Quân đoàn huyết khối:</em>
                                               <p>
-                                                돌격 외에도 무기를 사용하여 적과 육탄전을
-                                                벌일 수 있는 기병입니다.
+                                                Ngoài tấn công, đây là một đội kỵ binh có thể sử dụng vũ khí để tham gia vào các trận chiến của kẻ thù và trên bộ.
                                               </p>
-                                              <em>빠른 기동성：</em>
+                                              <em>Khả năng cơ động nhanh：</em>
                                               <p>
-                                                돌격 거리가 비교적 짧으며, 지속 시간이
-                                                짧습니다.
+                                                Khoảng cách lực đẩy tương đối ngắn, và thời gian ngắn.
                                               </p>
-                                              <em>화기 방어:</em>
-                                              <p>화승총 병종류에 대한 저항성이 높습니다.</p>
+                                              <em>Vũ khí phòng thủ:</em>
+                                              <p>Nó có khả năng kháng cao với các loại chai súng Hwaseung.</p>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kỹ năng</h3>
                                             <div class="text-wrap">
-                                              <em>돌격(쿨타임이 짧습니다)</em>
+                                              <em>Tấn công (thời gian mát mẻ là ngắn)</em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>완화 방진 설형진 횡렬진</em>
+                                              <em>Chống bụi giảm nhẹ Seol Hyeong-jin</em>
                                               <div class="img">
                                                 <i class="dot-5-2-1"></i>
                                                 <i class="dot-5-2-2"></i>
@@ -2133,47 +2000,44 @@
                                     </div>
                                     <div class="intro-wrap corps-intro-3">
                                       <div class="title-wrap">
-                                        <span class="title">관녕 철기병</span>
+                                        <span class="title">Kỵ sĩ sắt Gwanyeong</span>
                                       </div>
                                       <div class="intro">
                                         <div class="intro-left">
                                           <div class="intro-item intro-item-1">
-                                            <h3 class="intro-title">주요 행동</h3>
+                                            <h3 class="intro-title">Hoạt động chính</h3>
                                             <div class="text-wrap">
                                               <em>
-                                                사격 돌격을 이용하여 적을 살상한 후 근거리
-                                                격투를 발동하는 데
-                                                능합니다.
+                                                Bạn có thể sử dụng các cuộc tấn công lửa để giết kẻ thù và sau đó kích hoạt chiến đấu tầm ngắn.
                                               </em>
                                               <em>
-                                                설형진을 이용하여
-                                                적군 진형을 부숴 데미지 피해를 입힙니다.
+                                                Đánh bại đội hình của kẻ thù bằng cách sử dụng Snow Hyung-Jin để gây sát thương.
                                               </em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-2">
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                             <div class="text-wrap">
-                                              <em>사격 돌격:</em>
-                                              <p>돌격 시 삼안총으로 사격을 할 수 있습니다.</p>
-                                              <em>둔기 충격:</em>
-                                              <p>둔기로 적을 공격하여 데미지 피해를 입힙니다.</p>
-                                              <em>중갑:</em>
-                                              <p>두꺼운 갑옷을 입어 방어력이 비교적 높습니다.</p>
+                                              <em>Tấn công:</em>
+                                              <p>Bạn có thể bắn bằng súng ba nòng khi tấn công.</p>
+                                              <em>Sốc cùn:</em>
+                                              <p>Tấn công kẻ thù với thiệt hại cùn.</p>
+                                              <em>Áo giáp nặng:</em>
+                                              <p>Bộ giáp tương đối cao với áo giáp dày.</p>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kỹ năng</h3>
                                             <div class="text-wrap">
-                                              <em>돌격</em>
+                                              <em>sạc điện</em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>산개진 구형진 충시진</em>
+                                              <em>Lan truyền hình tròn</em>
                                               <div class="img">
                                                 <i class="dot-5-3-1"></i>
                                                 <i class="dot-5-3-2"></i>
@@ -2188,16 +2052,16 @@
                                       <div
                                         class="kv kv5"
                                         data-kv="1"
-                                        data-name1="고밀 궁마대"
-                                        data-name2="유림 표기장군영"
-                                        data-name3="관녕 철기병"
+                                        data-name1="Một vòm dày đặc"
+                                        data-name2="Ký hiệu Yurim"
+                                        data-name3="Kỵ sĩ sắt Gwanyeong"
                                       ></div>
                                       <div class="switch-button-wrap">
                                         <div class="switch-button" data-thumb="2">
-                                          <p class="kv-name">유림 표기장군영</p>
+                                          <p class="kv-name">Ký hiệu Yurim</p>
                                         </div>
                                         <div class="switch-button" data-thumb="3">
-                                          <p class="kv-name">관녕 철기병</p>
+                                          <p class="kv-name">Kỵ sĩ sắt Gwanyeong</p>
                                         </div>
                                       </div>
                                     </div>
@@ -2214,58 +2078,51 @@
                                   <div class="slide-content">
                                     <div class="intro-wrap corps-intro-1 corps-intro-show">
                                       <div class="title-wrap">
-                                        <span class="title">호위 등갑대</span>
+                                        <span class="title">Hộ tống bọc thép</span>
                                       </div>
                                       <div class="intro">
                                         <div class="intro-left">
                                           <div class="intro-item intro-item-1">
-                                            <h3 class="intro-title">주요 행동</h3>
+                                            <h3 class="intro-title">Hoạt động chính</h3>
                                             <div class="text-wrap">
                                               <em>
-                                                장착한 등갑은 철갑과 비슷한 방어 능력을
-                                                가지면서도 매우 가볍고 기동성이
-                                                뛰어납니다.
+                                                Bộ giáp được trang bị rất nhẹ và cơ động trong khi có khả năng phòng thủ tương tự như áo giáp.
                                               </em>
-                                              <p>찌르기와 휘두르기를 막을 수 있습니다.</p>
+                                              <p>Bạn có thể ngăn chặn đâm và cầm.</p>
                                               <p>
-                                                불 공격에 약합니다. 불 공격을 당한 경우
-                                                높은 확률로 와해됩니다.
+                                                Yếu chống lại các cuộc tấn công lửa. Nếu bị tấn công bằng lửa, có khả năng cao bị phá vỡ.
                                               </p>
                                               <em>
-                                                가볍고
-                                                편한 등갑은 경량 무기는 막을 수 있지만
-                                                중공격에 약합니다.
+                                                Áo giáp nhẹ và thoải mái có thể chặn vũ khí hạng nhẹ, nhưng dễ bị tấn công nặng.
                                               </em>
-                                              <p>공격 시 일정한 방패 방어가 가능합니다.</p>
+                                              <p>Khi tấn công, phòng thủ lá chắn nhất định là có thể.</p>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-2">
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                             <div class="text-wrap">
-                                              <em>등갑:</em>
+                                              <em>Ba lô:</em>
                                               <p>
-                                                등갑은 가볍고 편하면서 찌르기와 휘두르기
-                                                공격에 강하나 불에 약합니다.
+                                                Bộ giáp này rất nhẹ và thoải mái, có khả năng chống lại các cuộc tấn công đâm và cầm, nhưng dễ bị hỏa hoạn.
                                               </p>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kỹ năng</h3>
                                             <div class="text-wrap">
-                                              <em>돌격</em>
+                                              <em>sạc điện</em>
                                               <p>
-                                                돌격 위력은 보통 수준이나 돌격 거리가 길며
-                                                속도가 빠릅니다.
+                                                Sức đẩy là bình thường, nhưng khoảng cách lực đẩy dài và tốc độ nhanh.
                                               </p>
-                                              <p>쿨타임은 보통.</p>
+                                              <p>Thời gian mát mẻ là bình thường.</p>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>산개진 횡렬진 충시진</em>
+                                              <em>Suối núi</em>
                                               <div class="img">
                                                 <i class="dot-6-1-1"></i>
                                                 <i class="dot-6-1-2"></i>
@@ -2278,77 +2135,62 @@
                                     </div>
                                     <div class="intro-wrap corps-intro-2">
                                       <div class="title-wrap">
-                                        <span class="title">파주 장창영</span>
+                                        <span class="title">Paju Chang Chang-young</span>
                                       </div>
                                       <div class="intro">
                                         <div class="intro-left">
                                           <div class="intro-item intro-item-1">
-                                            <h3 class="intro-title">주요 행동</h3>
+                                            <h3 class="intro-title">Hoạt động chính</h3>
                                             <div class="text-wrap">
                                               <em>
-                                                주로 진형을 이용한 전투 훈련을 받았으며
-                                                바리케이드 진형을 구사할 수 있으나 각개
-                                                전투는 비교적
-                                                약합니다.
+                                                Phần lớn là chấp nhận huấn luyện chiến đấu hình thành. nhưng cuộc chiến của họ khá yếu.
                                               </em>
                                               <em>
-                                                착용한 등갑의
-                                                방어력은 찰갑과 비슷하지만 가벼운 무게를
-                                                자랑합니다.
+                                                Mặc dù giáp của đá caramel có thể giống như giáp saphire, nhưng nó có ít trọng lượng.
                                               </em>
                                               <p>
-                                                찌르기와 휘두르기를 막을 수 있습니다.불
-                                                공격에 약합니다. 불 공격을 당하면 높은
-                                                확률로 와해됩니다.
+                                                Có thể ngăn việc đâm và vẫy tay không chống lại hỏa hoạnKhi bị tấn công bởi lửa, có nhiều khả năng sụp đổ.
                                               </p>
                                               <p>
-                                                경량 무기는 막을 수 있지만 중공격에
-                                                약합니다.
+                                                Vũ khí hạng nhẹ có thể bị chặn, nhưng dễ bị tấn công nặng.
                                               </p>
                                               <p>
-                                                우수한 기동성을 가지고 있어서 산지에서의
-                                                전투에 유리합니다.
+                                                Nó có khả năng cơ động tuyệt vời, thuận lợi cho chiến đấu ở vùng núi.
                                               </p>
                                               <em>
-                                                창 끝을
-                                                금탕에 끓여 적에게 투사하여 맞출 시 적을
-                                                중독시켜 허약하게 만듭니다.
+                                                Bỏ mũi giáo vào bát súp vàng và chiến đấu chống lại kẻ thù để làm kẻ thù bị đầu độc và yếu đuối.
                                               </em>
-                                              <p>적의 공격 속도와 피해를 낮춥니다.</p>
+                                              <p>Giảm tốc độ tấn công và hư hại.</p>
                                               <p>
-                                                금탕의 끓인 창 끝은 녹슬기 쉽고 관통 능력이
-                                                좋지 않으나, 피해량은 표준 수치에
-                                                속합니다.
+                                                Đầu của một ngọn giáo luộc ở Geumtang rất dễ bị rỉ sét và có độ xuyên thấu kém, nhưng thiệt hại là trong tiêu chuẩn.
                                               </p>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-2">
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Đặc điểm lực lượng</h3>
                                             <div class="text-wrap">
-                                              <em>등갑：</em>
+                                              <em>Giáp:</em>
                                               <p>
-                                                등갑은 가볍고 편하면서 찌르기와 휘두르기
-                                                공격에 강하나 불에 약합니다.
+                                                Bộ giáp lưng nhẹ và thoải mái, mạnh mẽ chống lại những vụ đâm và vẫy tay, yếu đuối chống lại lửa.
                                               </p>
-                                              <em>금탕 독:</em>
+                                              <em>Ngộ độc vàng Đường:</em>
                                               <p>
-                                                무기에 금탕을 발라 적을 허약하게 만들고
-                                                지속적 피해를 입힙니다.
+                                                Áp dụng vàng vào vũ khí làm suy yếu kẻ thù và gây sát thương liên tục.
                                               </p>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kỹ năng</h3>
                                             <div class="text-wrap">
-                                              <em>스킬이 없습니다.</em>
+                                              <em>Không có kỹ năng.</em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>산개진</em>
+                                              <em>Phân tán vị trí</em>
                                               <div class="img">
                                                 <i class="dot-6-2-1"></i>
                                               </div>
@@ -2359,71 +2201,60 @@
                                     </div>
                                     <div class="intro-wrap corps-intro-3">
                                       <div class="title-wrap">
-                                        <span class="title">파주 연노영</span>
+                                        <span class="title">Lưu Châu.</span>
                                       </div>
                                       <div class="intro">
                                         <div class="intro-left">
                                           <div class="intro-item intro-item-1">
-                                            <h3 class="intro-title">주요 행동</h3>
+                                            <h3 class="intro-title">Hành động chính</h3>
                                             <div class="text-wrap">
                                               <em>
-                                                비교적 긴 시간(3-5 초)을 걸려 여러
-                                                개의 화살을 장전한 후 한 번에
-                                                쏩니다.
+                                                Sau khi nhiều mũi tên được nạp trong một thời gian dài (3-5 giây), hãy bắn một lần.
                                               </em>
                                               <p>
-                                                연노는 위력이 비교적 낮은 편이라 관통 능력이
-                                                비교적 떨어집니다. 경갑 유닛을 공격하기에
-                                                적합하나 중형 갑옷을 상대하기에는 무리가
-                                                있습니다.
+                                                Sức mạnh của cái nỏ thấp và khả năng thâm nhập của nó rất thấp.Nó tốt cho việc tấn công nhóm giáp nhẹ, nhưng nó hơi miễn cưỡng chống lại bộ giáp trung bình.
                                               </p>
-                                              <p>사격 범위가 넓고 폭발적인 공격이 가능합니다.</p>
+                                              <p>Tầm bắn rộng, nổ tung tấn công.</p>
                                               <em>
-                                                착용한 등갑은 방어력이 찰갑에
-                                                가까우며 매우 가볍고 편리합니다.
+                                                Phòng vệ của bộ giáp ánh sáng rất gần gạo nếp, rất nhẹ và tiện lợi.
                                               </em>
-                                              <p>찌르기와 휘두르기를 막을 수 있습니다.</p>
+                                              <p>Để tránh đâm và vẫy tay.</p>
                                               <p>
-                                                불 공격에 약합니다. 불 공격을 당하면 높은
-                                                확률로 와해됩니다.
+                                                Không giỏi bắn lửa.Khi bị tấn công bởi lửa, có nhiều khả năng sụp đổ.
                                               </p>
                                               <p>
-                                                경량 무기는 막을 수 있지만 중공격에는
-                                                약합니다.
+                                                Mặc dù nó có thể chống lại những vũ khí nhẹ, nhưng tấn công trung tâm rất yếu.
                                               </p>
                                               <em>
-                                                근거리 격투 능력을
-                                                갖추지 않고 있습니다.
+                                                Không có khả năng cận chiến.
                                               </em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-2">
-                                            <h3 class="intro-title">부대 특성</h3>
+                                            <h3 class="intro-title">Hệ thống bảo mật</h3>
                                             <div class="text-wrap">
-                                              <em>등갑:</em>
+                                              <em>Ba lô:</em>
                                               <p>
-                                                등갑은 가볍고 편하면서 찌르기와 휘드르기
-                                                공격에 강하나 불에 약합니다.
+                                                Bộ giáp lưng nhẹ và thoải mái, mạnh mẽ để đâm và cắt, yếu đuối để bắn.
                                               </p>
-                                              <em>연발 쇠뇌틀:</em>
+                                              <em>Vô tuyến khai hỏa:</em>
                                               <p>
-                                                한 번에 여러 개의 화살 발사하여 화살비로
-                                                적에게 피해를 입힙니다.
+                                                Bắn nhiều mũi tên mỗi lần. Dùng tên mưa để gây tổn thương kẻ thù.
                                               </p>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="intro-right">
                                           <div class="intro-item intro-item-3">
-                                            <h3 class="intro-title">스킬</h3>
+                                            <h3 class="intro-title">kĩ năng</h3>
                                             <div class="text-wrap">
-                                              <em>지정 공격</em>
+                                              <em>Quỷ xanh tấn công</em>
                                             </div>
                                           </div>
                                           <div class="intro-item intro-item-4">
-                                            <h3 class="intro-title">진형</h3>
+                                            <h3 class="intro-title">Sự hình thành</h3>
                                             <div class="text-wrap">
-                                              <em>산개진 궁형진</em>
+                                              <em>núi</em>
                                               <div class="img">
                                                 <i class="dot-6-3-1"></i>
                                                 <i class="dot-6-3-2"></i>
@@ -2437,16 +2268,16 @@
                                       <div
                                         class="kv kv6"
                                         data-kv="1"
-                                        data-name1="호위 등갑대"
-                                        data-name2="파주 장창영"
-                                        data-name3="파주 연노영"
+                                        data-name1="Hộ tống bọc thép"
+                                        data-name2="Paju Chang Chang-young"
+                                        data-name3="Paju Yeon Ro-young"
                                       ></div>
                                       <div class="switch-button-wrap">
                                         <div class="switch-button" data-thumb="2">
-                                          <p class="kv-name">파주 장창영</p>
+                                          <p class="kv-name">Paju Chang Chang-young</p>
                                         </div>
                                         <div class="switch-button" data-thumb="3">
-                                          <p class="kv-name">파주 연노영</p>
+                                          <p class="kv-name">Paju Yeon Ro-young</p>
                                         </div>
                                       </div>
                                     </div>
@@ -2471,92 +2302,9 @@
                             <div class="nav-wrap">
                               <div
                                 id="J-pagination-apparatus"
+                                ref="J-pagination-apparatus"
                                 class="swiper-pagination pagination-apparatus swiper-pagination-clickable swiper-pagination-bullets"
                               >
-                                <div
-                                  class="swiper-pagination-bullet swiper-pagination-bullet-active"
-                                  style="top: 277.93px; left: 215.758px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 127.64px; left: 394.868px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 32.5402px; left: 608.465px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 0px; left: 840px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 32.5402px; left: 1071.54px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 127.64px; left: 1285.13px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 277.93px; left: 1464.24px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 471.768px; left: 1594.99px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 694.136px; left: 1667.24px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 927.804px; left: 1675.4px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 1154.67px; left: 1618.83px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 1357.16px; left: 1501.93px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 1519.57px; left: 1333.74px;"
-                                >
-                                  <span></span>
-                                </div>
-                                <div
-                                  class="swiper-pagination-bullet"
-                                  style="top: 1629.34px; left: 1127.3px;"
-                                >
-                                  <span></span>
-                                </div>
                               </div>
                             </div>
                             <div class="button-wrap">
@@ -2578,16 +2326,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">공성탑</span>
+                                      <span class="title">Tháp vây hãm</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            성 밖에 가설해 부대를 이용해 전진시킨다. 성벽에 접촉한 후
-                                            칸막이가 자동으로 내려오는데, 병사들은 그것을 이용해 성벽
-                                            위로 올라갈 수 있다. 하지만 공성탑은 전진 중에 화포에
-                                            의해 파괴될 수 있다.
+                                            Chúng tôi dựng một cái lều bên ngoài lâu đài và sử dụng quân đội để tiến lên. Sau khi chạm vào tường, vách ngăn sẽ tự động hạ xuống và binh lính có thể sử dụng nó để trèo qua tường. Tuy nhiên, tháp bao vây có thể bị phá hủy bởi pháo trong khi di chuyển về phía trước.
                                           </p>
                                         </div>
                                       </div>
@@ -2605,15 +2350,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">충차</span>
+                                      <span class="title">Viên mãn</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            거대한 원목으로 만들었으며, 사병의 미는 힘으로 성문을
-                                            부순다. 볏집 등으로 만든 천장으로 적의 화살 공격을 막을
-                                            수 있다.
+                                            Được làm bằng gỗ đồ sộ, vẻ đẹp của những người lính đè bẹp cổng. Trần nhà làm bằng mào, v.v., có thể ngăn mũi tên của kẻ thù tấn công.
                                           </p>
                                         </div>
                                       </div>
@@ -2631,16 +2374,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">일와봉총</span>
+                                      <span class="title">Ilwabongchong</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            중국 송나라 때에 이미 화약을 동력원으로 한 활과 화살이
-                                            나타났으며, 명나라 때에는 한 층 더 발전했다.
-                                            '무비지'에 따르면 사격 시 마치 벌떼가 벌집에서 나오는
-                                            것처럼 끝없이 이어진다하여 유명해졌다고 한다.
+                                            Trong Cung nhà Tống, cung và mũi tên được nạp bằng thuốc súng xuất hiện, và trong triều nhà Minh, chúng lại phát triển trở lại.Theo biên niên sử phim, khi quay phim, nó nổi tiếng với sự xuất hiện liên tục của ong như những con ong ra khỏi tổ ong.
                                           </p>
                                         </div>
                                       </div>
@@ -2658,17 +2398,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">우르반 대포</span>
+                                      <span class="title">Đại bác Uruba</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            1453년 콘스탄티노폴리스 공성전 중, 오스만 제국이 사용한
-                                            거대한 화포로, 길이는 5.2미터, 무게는 17톤, 직경은
-                                            760mm에 달한다. 이 무기는 설계자의 이름에서
-                                            비롯되었으며, 우르반은 대포가 발사되었을 때 뜻하지 않은
-                                            사고로 죽음을 맞이했다.
+                                            Trong cuộc bao vây Constantinople ở 143, pháo đài khổng lồ dùng bởi đế chế Ottoman còn dài 52 mét, 17 tấn nặng và!Vũ khí được đặt theo tên nhà thiết kế và vô tình bị giết khi đại bác nổ súng.
                                           </p>
                                         </div>
                                       </div>
@@ -2686,16 +2422,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">투석노</span>
+                                      <span class="title">Lò lọc máu</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            투석노는 상노와 투석기를 결합해 만든 것으로, 거대한
-                                            활시위의 회전력을 이용해 석괴를 발사한다. 정교하고
-                                            편리하며 유산탄으로 낙하 지점 근처의 적에게 넓은 면적의
-                                            살상 피해를 입힐 수 있다.
+                                            Một lò lọc máu là sự kết hợp giữa Sangno và máy phóng, và nó sử dụng một lực xoay lớn để bắn một khối đá. Tinh vi, tiện lợi và mảnh đạn có thể gây sát thương trên diện rộng cho kẻ địch ở gần điểm rơi.
                                           </p>
                                         </div>
                                       </div>
@@ -2713,16 +2446,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">사철 화포</span>
+                                      <span class="title">Một bức tranh riêng</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            명나라 화포의 일종으로 포관이 비교적 짧으며 화염, 자갈,
-                                            사철 등을 장전한다. 사거리는 비교적 짧지만 상당히 넓은
-                                            범위 내의 목표에게 피해를 입힐 수 있으며, 경갑 근접전
-                                            유닛의 천적이다.
+                                            Nó là một loại vải bạt thời nhà Minh với pháo tương đối ngắn và nạp lửa, sỏi và cát. Tầm bắn tương đối ngắn, nhưng nó có thể gây sát thương cho các mục tiêu trong phạm vi khá rộng và là kẻ thù tự nhiên của các đơn vị cận chiến hạng nhẹ.
                                           </p>
                                         </div>
                                       </div>
@@ -2740,16 +2470,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">연소관 투척기</span>
+                                      <span class="title">Máy đốt ống đốt</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            신성 로마 시대 용수철 회전력을 이용한 투석노를 발전시킨
-                                            것으로, 유조 탱크가 던져진 곳의 수십 미터를 태워 적군을
-                                            불태운다. 구조가 작고 정교해 방어력은 비교적 약하지만
-                                            장전 속도는 상당히 빠르다.
+                                            Nó là sự phát triển của một lò lọc máu sử dụng lực quay mùa xuân của Thời đại La Mã thần thánh. Cấu trúc nhỏ và tinh vi, nên khả năng phòng thủ tương đối yếu, nhưng tốc độ tải khá cao.
                                           </p>
                                         </div>
                                       </div>
@@ -2767,16 +2494,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">콩그리브 로켓</span>
+                                      <span class="title">Tên lửa Congreave</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            초반에는 해전에 자주 사용되었으며, 전투함 시대의 '바다
-                                            위의 사신'으로 대형 함선을 불태울 수 있었다. 발사대의
-                                            로켓을 순서대로 발사하여, 포물선을 그리며 날아간 로켓은
-                                            적을 완전히 불태울 수 있었다.
+                                            Trong những ngày đầu, nó thường được sử dụng trong các trận hải chiến và nó có thể đốt cháy những con tàu lớn với 'Reaper trên biển' trong thời kỳ chiến hạm. Bằng cách phóng các tên lửa của bệ phóng theo trình tự, các tên lửa bay trong parabola đã có thể đốt cháy hoàn toàn kẻ thù.
                                           </p>
                                         </div>
                                       </div>
@@ -2794,15 +2518,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">피렌체 허리케인 쇠뇌</span>
+                                      <span class="title">Nỏ bão Florence</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            다빈치의 설계대로 만들었으며 강력한 활대 하나를 가진 차형
-                                            활대 쇠뇌이다. 발사 시 화살의 거대한 운동 에너지로 적군
-                                            부대의 방어 진형과 일반 병기를 관통할 수 있다.
+                                            Nó được làm theo thiết kế của Da Vinci, và là một chiếc nỏ hình xe hơi với một cây gậy mạnh mẽ. Khi khai hỏa, động năng khổng lồ của mũi tên có thể xuyên thủng hệ thống phòng thủ và vũ khí chung của kẻ thù.
                                           </p>
                                         </div>
                                       </div>
@@ -2820,16 +2542,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">오스만 구포</span>
+                                      <span class="title">Áo khoác bạc Description</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            석탄을 발사하는 고사포로 앞부분에는 여러 개의 쇠막대를 두른
-                                            포신이 있고, 뒷부분에는 연철로 만든 약실이 있으며,
-                                            포탄은 특수한 손잡이 고리를 사용해 넣어야 한다. 포탄은
-                                            높은 탄도로 발사해 성 내부를 공격할 수 있다.
+                                            Khẩu súng chống máy bay để bắn than có một thân hình có thanh sắt phía trước và một buồng y tế được làm từ thép phía sau. Cần phải sử dụng một thanh chắn đặc biệt.Lớp vỏ có thể phóng đường rất cao để tấn công thành phố.
                                           </p>
                                         </div>
                                       </div>
@@ -2847,16 +2566,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">상노</span>
+                                      <span class="title">Nô lệ buôn bán</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            전국 시대에 이미 출현했다. 송나라 때에는 3개 심지어 그
-                                            이상의 활을 사용해 힘을 합쳐 화살을 발사했다. 사거리는
-                                            500미터 이상이며, 사용하기가 쉽고, 사격 범위나 장전에
-                                            있어 모두 매우 우수하다.
+                                            Cũng đã có thời kỳ của hiệp ước.Trong Cung nhà Tống, ba hay nhiều cung được dùng để bắn tên cùng nhau.Với cự ly nhiều hơn 500m, rất dễ sử dụng và rất tốt trong phạm vi và trong việc lắp đặt.
                                           </p>
                                         </div>
                                       </div>
@@ -2874,15 +2590,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">포석기</span>
+                                      <span class="title">Bình đá</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            공성전에서 널리 쓰이며, 거대한 바위를 투척해 적군과 성벽을
-                                            공격한다. 위력은 엄청나지만 정확도가 떨어져 여러 대를
-                                            동시에 배치해 공격하는 것이 좋다.
+                                            Nó được sử dụng rộng rãi trong trận vây thành, ném đá cuội để tấn công kẻ thù và tường thành.Tuy nó có sức mạnh, vì độ chính xác thấp, nhưng tốt hơn là tập hợp nhiều đội để tấn công cùng lúc.
                                           </p>
                                         </div>
                                       </div>
@@ -2900,16 +2614,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">홍의대포</span>
+                                      <span class="title">Đại bác đỏ</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            16세기에 유럽이 먼저 중량 활강총포를 사용했으며, 명나라
-                                            후기에 중국에 전해졌다. 포신을 붉은 천으로 덮는 일이
-                                            많아 '홍의 대포'라고도 불렸다. 개량과 복제를 거쳐 연해
-                                            포대와 주요한 관문에 소량 배치되었다.
+                                            Trong thế kỷ mười sáu, người Châu Âu lần đầu sử dụng súng trường nòng súng nặng, được đưa vào Trung Quốc vào thời Minh.The body of the gun is covered with red vải, which is called "red Cannon".Sau khi cải tiến và tái tạo, một số lượng nhỏ được triển khai ở pháo đài duyên hải và cửa chính bị đóng lại.
                                           </p>
                                         </div>
                                       </div>
@@ -2927,15 +2638,13 @@
                                 <div class="slide-content">
                                   <div class="intro-wrap">
                                     <div class="title-wrap">
-                                      <span class="title">프랑스 야포</span>
+                                      <span class="title">Đại bác Pháp</span>
                                     </div>
                                     <div class="intro">
                                       <div class="intro-item">
                                         <div class="text">
                                           <p>
-                                            서양의 직사식 활강총포의 야포로, 실심탄을 사용해 적을
-                                            공격하며, 정확도가 비교적 높다. 하지만 살상 인원에
-                                            한계가 있다.
+                                            Những khẩu súng trường và đạn rắn của bọn đại bàng trực tiếp bắn pháo tấn công kẻ thù với độ chính xác cao.Nhưng có giới hạn trong việc giết người.
                                           </p>
                                         </div>
                                       </div>
@@ -2948,7 +2657,7 @@
                               </swiper-slide>
                           </swiper>
                         </div>
-                        <div class="num">01</div>
+                        <div class="num">{{weapon.currentIndex}}</div>
                       </div>
                     </div>
                   </swiper-slide>
@@ -2960,9 +2669,9 @@
           <div class="section section-inner">
             <div class="section-content">
               <div class="title-wrap">
-                <div class="num">02</div>
-                <h2 class="title">애니메이션 영상</h2>
-                <h3 class="sub-title">영웅의 탄생</h3>
+                <div class="num">0{{video.currentIndex}}</div>
+                <h2 class="title">{{video.title}}</h2>
+                <h3 class="sub-title">{{video.subTitle}}</h3>
               </div>
               <div class="video">
                 <swiper
@@ -2971,10 +2680,9 @@
                   class="swiper-container swiper-container-video swiper-container-coverflow swiper-container-3d swiper-container-horizontal"
                 >
                     <swiper-slide
-                      class="swiper-slide slide-video swiper-slide-duplicate swiper-slide-duplicate-prev"
+                      class="swiper-slide slide-video"
                       data-mp4="N6hH6fGTwdY"
                       data-swiper-slide-index="0"
-                      style="transition-duration: 0ms; transform: translate3d(1000px, 0px, -1200px) rotateX(0deg) rotateY(0deg); z-index: -3;"
                     >
                       <div class="img-wrap" data-mp4>
                         <div class="img img1"></div>
@@ -2982,10 +2690,9 @@
                       </div>
                     </swiper-slide>
                     <swiper-slide
-                      class="swiper-slide slide-video swiper-slide-duplicate swiper-slide-duplicate-active"
+                      class="swiper-slide slide-video"
                       data-mp4="NRGLSWvmJs8"
                       data-swiper-slide-index="1"
-                      style="transition-duration: 0ms; transform: translate3d(750px, 0px, -900px) rotateX(0deg) rotateY(0deg); z-index: -2;"
                     >
                       <div class="img-wrap" data-mp4>
                         <div class="img img2"></div>
@@ -2993,76 +2700,9 @@
                       </div>
                     </swiper-slide>
                     <swiper-slide
-                      class="swiper-slide slide-video swiper-slide-duplicate swiper-slide-duplicate-next"
+                      class="swiper-slide slide-video"
                       data-mp4="2MjO8WKFFWE"
                       data-swiper-slide-index="2"
-                      style="transition-duration: 0ms; transform: translate3d(500px, 0px, -600px) rotateX(0deg) rotateY(0deg); z-index: -1;"
-                    >
-                      <div class="img-wrap" data-mp4>
-                        <div class="img img3"></div>
-                        <span class="btn-play" data-mp4="2MjO8WKFFWE"></span>
-                      </div>
-                    </swiper-slide>
-                    <swiper-slide
-                      class="swiper-slide slide-video swiper-slide-prev"
-                      data-mp4="N6hH6fGTwdY"
-                      data-swiper-slide-index="0"
-                      style="transition-duration: 0ms; transform: translate3d(250px, 0px, -300px) rotateX(0deg) rotateY(0deg); z-index: 0;"
-                    >
-                      <div class="img-wrap" data-mp4>
-                        <div class="img img1"></div>
-                        <span class="btn-play" data-mp4="N6hH6fGTwdY"></span>
-                      </div>
-                    </swiper-slide>
-                    <swiper-slide
-                      class="swiper-slide slide-video swiper-slide-active"
-                      data-mp4="NRGLSWvmJs8"
-                      data-swiper-slide-index="1"
-                      style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1;"
-                    >
-                      <div class="img-wrap" data-mp4>
-                        <div class="img img2"></div>
-                        <span class="btn-play" data-mp4="NRGLSWvmJs8"></span>
-                      </div>
-                    </swiper-slide>
-                    <swiper-slide
-                      class="swiper-slide slide-video swiper-slide-next"
-                      data-mp4="2MjO8WKFFWE"
-                      data-swiper-slide-index="2"
-                      style="transition-duration: 0ms; transform: translate3d(-250px, 0px, -300px) rotateX(0deg) rotateY(0deg); z-index: 0;"
-                    >
-                      <div class="img-wrap" data-mp4>
-                        <div class="img img3"></div>
-                        <span class="btn-play" data-mp4="2MjO8WKFFWE"></span>
-                      </div>
-                    </swiper-slide>
-                    <swiper-slide
-                      class="swiper-slide slide-video swiper-slide-duplicate swiper-slide-duplicate-prev"
-                      data-mp4="N6hH6fGTwdY"
-                      data-swiper-slide-index="0"
-                      style="transition-duration: 0ms; transform: translate3d(-500px, 0px, -600px) rotateX(0deg) rotateY(0deg); z-index: -1;"
-                    >
-                      <div class="img-wrap" data-mp4>
-                        <div class="img img1"></div>
-                        <span class="btn-play" data-mp4="N6hH6fGTwdY"></span>
-                      </div>
-                    </swiper-slide>
-                    <swiper-slide
-                      class="swiper-slide slide-video swiper-slide-duplicate swiper-slide-duplicate-active"
-                      data-mp4="NRGLSWvmJs8"
-                      data-swiper-slide-index="1"
-                      style="transition-duration: 0ms; transform: translate3d(-750px, 0px, -900px) rotateX(0deg) rotateY(0deg); z-index: -2;"
-                    >
-                      <div class="img-wrap" data-mp4>
-                        <div class="img img2"></div>
-                        <span class="btn-play" data-mp4="NRGLSWvmJs8"></span>
-                      </div>
-                    </swiper-slide>
-                    <swiper-slide
-                      class="swiper-slide slide-video swiper-slide-duplicate swiper-slide-duplicate-next"
-                      data-mp4="2MjO8WKFFWE"
-                      data-swiper-slide-index="2"
-                      style="transition-duration: 0ms; transform: translate3d(-1000px, 0px, -1200px) rotateX(0deg) rotateY(0deg); z-index: -3;"
                     >
                       <div class="img-wrap" data-mp4>
                         <div class="img img3"></div>
@@ -3125,41 +2765,23 @@
                 </div>
             </div>
     </div>
+    <login
+      :cssShow="cssShow"
+      @close="close()"
+      :isShow="showLogin"
+    />
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-const gameArray = [{
-  tab: 'Khai mạc',
-  video: {
-    webm: 'https://z.v.netease.com/2019/1203/ae90b9cfbde10ca0a7f5ad8500f4e766.webm',
-    mp4: 'https://z.v.netease.com/2019/1203/4ad53615f4fc2c603e593884fe041466qt.mp4'
-  }
-}, {
-  tab: 'Cuộc bao vây lớn',
-  video: {
-    webm: 'https://z.v.netease.com/2019/1203/2212238ad8dfa27ee5696ce6a2cfc4d3.webm',
-    mp4: 'https://z.v.netease.com/2019/1203/3e69f33ec52e71539111d337757f13d2qt.mp4'
-  }
-}, {
-  tab: 'Chinh phục thế giới',
-  video: {
-    webm: 'https://z.v.netease.com/2019/1203/141c179d238d40e9b676ab26d09232d2.webm',
-    mp4: 'https://z.v.netease.com/2019/1203/e807521e73479cafac88b9e3ca091459qt.mp4'
-  }
-}, {
-  tab: 'Hoạt động vũ khí',
-  video: {
-    webm: 'https://z.v.netease.com/2019/1203/9c7f6e3ffe5d17ce59a2edeb900aa5a5.webm',
-    mp4: 'https://z.v.netease.com/2019/1203/bbd2bdf592ec721a02bcc268d777cc0eqt.mp4'
-  }
-}]
+import { mapActions, mapGetters } from 'vuex'
+import { getStorage } from '@/utils/storage'
 export default {
   name: 'index',
   data () {
     const _this = this
     return {
+      token: getStorage('Authorization'),
       swiperOption: {
         allowTouchMove: false,
         direction: 'vertical',
@@ -3188,6 +2810,31 @@ export default {
       },
       gameSwiper: {
         currentIndex: 1,
+        gameArray: [{
+          tab: 'Khai mạc',
+          video: {
+            webm: 'https://z.v.netease.com/2019/1203/ae90b9cfbde10ca0a7f5ad8500f4e766.webm',
+            mp4: 'https://z.v.netease.com/2019/1203/4ad53615f4fc2c603e593884fe041466qt.mp4'
+          }
+        }, {
+          tab: 'Cuộc bao vây lớn',
+          video: {
+            webm: 'https://z.v.netease.com/2019/1203/2212238ad8dfa27ee5696ce6a2cfc4d3.webm',
+            mp4: 'https://z.v.netease.com/2019/1203/3e69f33ec52e71539111d337757f13d2qt.mp4'
+          }
+        }, {
+          tab: 'Chinh phục thế giới',
+          video: {
+            webm: 'https://z.v.netease.com/2019/1203/141c179d238d40e9b676ab26d09232d2.webm',
+            mp4: 'https://z.v.netease.com/2019/1203/e807521e73479cafac88b9e3ca091459qt.mp4'
+          }
+        }, {
+          tab: 'Hoạt động vũ khí',
+          video: {
+            webm: 'https://z.v.netease.com/2019/1203/9c7f6e3ffe5d17ce59a2edeb900aa5a5.webm',
+            mp4: 'https://z.v.netease.com/2019/1203/bbd2bdf592ec721a02bcc268d777cc0eqt.mp4'
+          }
+        }],
         options: {
           effect: 'fade',
           fadeEffect: {
@@ -3201,7 +2848,7 @@ export default {
             el: '#J-pagination-game',
             clickable: !0,
             renderBullet: function (e, t) {
-              return '<div class="' + t + '"><span>' + gameArray[e].tab + '</span></div>'
+              return '<div class="' + t + '"><span>' + _this.gameSwiper.gameArray[e].tab + '</span></div>'
             }
           },
           on: {
@@ -3236,7 +2883,7 @@ export default {
       },
       corps: {
         currentIndex: 1,
-        corpsTabArray: ['작은 방패류 부대222', '긴 자루류 부대', '투창류 부대', '원거리 부대', '기병 계열 부대', '등갑 계열 부대'],
+        corpsTabArray: ['Khiên nhỏ', '긴 자루류 부대', 'Túi dài', 'Quân đội', 'kỵ sĩ', 'Giáp'],
         options: {
           effect: 'fade',
           fadeEffect: {
@@ -3296,26 +2943,40 @@ export default {
           simulateTouch: !1,
           mousewheel: !1,
           loop: !1,
-          //   pagination: {
-          //     el: '#J-pagination-apparatus',
-          //     clickable: !0,
-          //     renderBullet: function (e, t) {
-          //       return '<div class="' + t + '"><span></span></div>'
-          //     }
-          //   },
+          pagination: {
+            el: '#J-pagination-apparatus',
+            clickable: !0,
+            renderBullet: function (e, t) {
+              return '<div class="' + t + '"><span></span></div>'
+            }
+          },
           navigation: {
             nextEl: '.pagination-apparatus-wrap .button-next',
             prevEl: '.pagination-apparatus-wrap .button-prev'
           },
           on: {
             init: function () {},
+            paginationRender: function (s, paginationEl) {
+              let c = -138 * Math.PI / 180
+              const all = document.querySelectorAll('#J-pagination-apparatus .swiper-pagination-bullet')
+              for (var e = 0; e < 14; e++) {
+                var t = 840 * (1 + Math.cos(c)) + 'px'
+                var i = 840 * (1 + Math.sin(c)) + 'px'
+                all[e].setAttribute('style', `top: ${i};left:${t}`)
+                c += 16 * Math.PI / 180
+              }
+            },
             slidePrevTransitionStart: function () {
-            //   var e = this.activeIndex
-            //   e === 6 && $('#J-pagination-apparatus').css('transform', 'rotate(0deg)')
+              var e = this.activeIndex
+              if (e === 6) {
+                _this.$refs['J-pagination-apparatus'].style.transform = 'rotate(0deg)'
+              }
             },
             slideNextTransitionStart: function () {
-            //   var e = this.activeIndex
-            //   e === 7 && $('#J-pagination-apparatus').css('transform', 'rotate(-112deg)')
+              var e = this.activeIndex
+              if (e === 7) {
+                _this.$refs['J-pagination-apparatus'].style.transform = 'rotate(-112deg)'
+              }
             },
             slideChangeTransitionStart: function () {
               let index = this.realIndex + 1
@@ -3326,6 +2987,22 @@ export default {
         }
       },
       video: {
+        videoArray: [{
+          title: 'Video phim',
+          subTitle: 'Chuẩn bị cho công văn',
+          mp4: 'N6hH6fGTwdY'
+        }, {
+          title: 'Đoạn phim hoạt hình',
+          subTitle: 'Sự ra đời của một anh hùng',
+          mp4: 'NRGLSWvmJs8'
+        }, {
+          title: 'Video phim',
+          subTitle: 'Bắt đầu cuộc chiến',
+          mp4: '2MjO8WKFFWE'
+        }],
+        currentIndex: 1,
+        title: 'Video phim',
+        subTitle: 'Chuẩn bị cho công văn',
         options: {
           effect: 'coverflow',
           grabCursor: !0,
@@ -3356,26 +3033,25 @@ export default {
             //   $('.slide-video .title-wrap .title').text(e.title), $('.slide-video .title-wrap .sub-title').text(e.subTitle)
             },
             slideChangeTransitionStart: function () {
-            //   var e = this.realIndex
-            //   var t = n.videoArray[e]
-            //   $('.slide-video .title-wrap .title').text(t.title), $('.slide-video .title-wrap .sub-title').text(t.subTitle), $('.slide-video').find('.num').text('0' + (e + 1))
+              const index = this.realIndex
+              const curItem = _this.video.videoArray[index]
+              _this.video.currentIndex = (index + 1)
+              _this.video.title = curItem.title
+              _this.video.subTitle = curItem.subTitle
             }
           }
         }
       }
     }
   },
+  computed: {
+    ...mapGetters(['showLogin', 'cssShow'])
+  },
   methods: {
-    ...mapActions(['showLoginAction']),
-    setLeft () {
-      for (var e = 0; e < 14; e++) {
-        // var t = 840 * (1 + Math.cos(c)) + 'px'
-        // var i = 840 * (1 + Math.sin(c)) + 'px'
-        // $('#J-pagination-apparatus .swiper-pagination-bullet').eq(e).css({
-        //   top: i,
-        //   left: t
-        // }), c += 16 * Math.PI / 180
-      }
+    ...mapActions(['showLoginAction', 'showForgotAction']),
+    close () {
+      this.showLoginAction(false)
+      this.showForgotAction(false)
     }
   }
 }

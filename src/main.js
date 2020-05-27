@@ -12,6 +12,7 @@ import '@/assets/css/index.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import style
 import 'swiper/css/swiper.css'
+import '@/auth'
 
 Vue.config.productionTip = false
 

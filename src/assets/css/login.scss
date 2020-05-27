@@ -19,6 +19,9 @@
   color: #fff;
   border-color: #ef4406;
 }
+.registerBtn {
+  height: 46px;
+}
 .dialogModal {
     position: fixed;
     left: 0;
@@ -137,14 +140,14 @@
     z-index: 2;
     right: 0;
     bottom: 5px;
-    padding: 3px 0;
+    padding: 10px 0;
     width: 103px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 40px;
     -webkit-user-select: none;
-    display: none;
+    // display: none;
   }
   .codeTime {
     background: #ddd;
@@ -180,19 +183,19 @@
   }
   .passwordIcon img{
     width: 20px;
-    display: none;
+    // display: none;
   }
   .passwordIcon .hideIcon {
     display: block
   }
   .showPassword .hideIcon {
-    display: none
+    // display: none
   }
   .showPassword img.showIcon {
     display: block;
   }
   .button .circularBox, .btn .circularBox{
-    display: none;
+    // display: none;
   }
   .button.loading {
     display: flex;
@@ -347,7 +350,6 @@
     transform: translate(0, 0);
   }
     .button.getCodeBtn, .codeTime {
-      padding: 8px 0;
       width: 116px;
     }
   

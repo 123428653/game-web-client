@@ -3130,6 +3130,8 @@ background-position:-1200px -0px;
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  background-color: transparent;
+  opacity: 1;
 }
 .section-apparatus .pagination-apparatus .swiper-pagination-bullet span {
   display: block;
@@ -3950,7 +3952,8 @@ background-position:-204px -1837px;
   height: 42px;
   background: url(../images/sprite.png);background-size:2026px 1957px;
 background-position:-1067px -970px;
-
+  opacity: 1;
+  border-radius: 0;
 }
 .section-corps .pagination-corps .swiper-pagination-bullet span {
   position: relative;
@@ -4016,6 +4019,7 @@ background-position:-1457px -1224px;
   margin-left: 20px;
   font-weight: bold;
   text-align: center;
+  white-space: nowrap;
   width: 115px;
   height: 34px;
   background: url(../images/sprite.png);background-size:2026px 1957px;
@@ -4745,12 +4749,11 @@ body {
   min-height: 830px;
   margin-left: auto;
   margin-right: auto;
-  background: #000;
 }
 html,
 body,
 #app,
-.swiper-container-out,.pageWrap {
+.swiper-container-out,.indexPage {
   height: 100%;
 }
 #app {
@@ -4784,6 +4787,9 @@ body,
   height: auto;
   opacity: 1;
   background-color: transparent;
+}
+.indexPage {
+  background: #000; 
 }
 .nav-top {
   position: absolute;
