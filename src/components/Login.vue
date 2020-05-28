@@ -5,7 +5,7 @@
       :style="{ display: cssShow ? 'block' : 'none' }"
       :class="isShow ? 'fade-down' : ''"
     >
-      <div class="mask"></div>
+      <div class="mask" @click="test"></div>
       <div class="dialogModalConent">
         <div class="popHeader">
           <div class="popTab">
@@ -30,7 +30,7 @@
           <div class="tabContent" :class="!loginActiveIndex ? 'active' : ''">
             <div class="inputs j_loginForm">
               <ace-input
-                title="Your Email"
+                title="Email của bạn"
                 type="email"
                 v-model.trim="login.email"
                 @enter="enterEmail"
@@ -39,7 +39,7 @@
                 :validateRule="'required|email'"
               />
               <ace-input
-                title="Your Password"
+                title="Mật khẩu của bạn"
                 :type="passwordType"
                 v-model.trim="login.password"
                 ref="loginPassword"
@@ -91,14 +91,14 @@
                     ></circle>
                   </svg>
                 </span>
-                <span>Login</span>
+                <span>Đăng nhập</span>
               </button>
             </div>
           </div>
           <div class="tabContent" :class="loginActiveIndex ? 'active' : ''">
             <div class="inputs">
               <ace-input
-                title="Your Email"
+                title="Email của bạn"
                 type="email"
                 v-model.trim="register.email"
                 ref="registerEmail"
@@ -106,7 +106,7 @@
                 :validateRule="'required|email'"
               />
               <ace-input
-                title="Verification Code"
+                title="Mã xác nhận"
                 v-model.trim="register.code"
                 ref="registerCode"
                 name="code"
@@ -117,13 +117,13 @@
                     @click="sendCode('register')"
                     class="button button-primary getCodeBtn"
                   >
-                    {{register.sendCodeLoading ? 'Getting...' : 'Get Code'}}
+                    {{register.sendCodeLoading ? 'Bắt ...' : 'Nhận được mã'}}
                   </button>
                   <div v-else class="codeTime">{{register.time}}s</div>
                 </template>
               </ace-input>
               <ace-input
-                title="Your Password"
+                title="Mật khẩu của bạn"
                 :type="passwordType"
                 v-model.trim="register.password"
                 ref="registerPassword"
@@ -175,7 +175,7 @@
                     ></circle>
                   </svg>
                 </span>
-                <span>Register</span>
+                <span>Đăng ký</span>
               </button>
             </div>
           </div>
@@ -184,7 +184,7 @@
               href="javascript:;"
               @click="showForgotAction(true)"
               class="j_forgotPasswordBtn"
-              >Forgot password?</a
+              >Quên mật khẩu?</a
             >
           </div>
         </div>
@@ -201,7 +201,7 @@
         <div class="popHeader">
           <div class="popTab">
             <div class="tabItem">
-              <a href="javascript:;" class="active">Reset Password</a>
+              <a href="javascript:;" class="active">Đặt lại mật khẩu</a>
             </div>
           </div>
           <a
@@ -215,7 +215,7 @@
           <div class="tabContent active">
             <div class="inputs">
               <ace-input
-                title="Your Email"
+                title="Email của bạn"
                 type="email"
                 v-model.trim="forgot.email"
                 ref="forgotEmail"
@@ -223,7 +223,7 @@
                 :validateRule="'required|email'"
               />
               <ace-input
-                title="Verification Code"
+                title="Mã xác nhận"
                 v-model.trim="forgot.code"
                 ref="forgotCode"
                 name="code"
@@ -234,13 +234,13 @@
                     @click="sendCode('forgot')"
                     class="button button-primary getCodeBtn"
                   >
-                    {{forgot.sendCodeLoading ? 'Getting...' : 'Get Code'}}
+                    {{forgot.sendCodeLoading ? 'Bắt ...' : 'Nhận được mã'}}
                   </button>
                   <div v-else class="codeTime">{{forgot.time}}s</div>
                 </template>
               </ace-input>
               <ace-input
-                title="Your Password"
+                title="Mật khẩu của bạn"
                 :type="passwordType"
                 v-model.trim="forgot.password"
                 ref="forgotPassword"
@@ -292,7 +292,7 @@
                     ></circle>
                   </svg>
                 </span>
-                <span>Rest Password</span>
+                <span>Đặt lại mật khẩu</span>
               </button>
             </div>
             <div class="backLogin">
@@ -300,7 +300,7 @@
                 href="javascript:;"
                 @click="backLoginAction"
                 class="j_backLogin"
-                >Back Login</a
+                >Quay lại Đăng nhập</a
               >
             </div>
           </div>
@@ -352,6 +352,9 @@ export default {
       'forgotAction',
       'sendCodeAcstion'
     ]),
+    test () {
+      // this.$toast.error('Error')
+    },
     enterEmail () {
       console.log(111)
     },
@@ -399,12 +402,13 @@ export default {
     validateForgot () {
       const { forgotEmail, forgotCode, forgotPassword } = this.$refs
       this.forgotAction([
-        forgotEmail.vlidate(),
-        forgotCode.vlidate(),
-        forgotPassword.vlidate()
+        forgotEmail,
+        forgotCode,
+        forgotPassword
       ])
     },
     close () {
+      this.$refs.forgotEmail.errors.clear()
       this.$emit('close')
     }
   }

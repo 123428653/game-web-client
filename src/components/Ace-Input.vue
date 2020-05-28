@@ -5,10 +5,11 @@
       :type="type"
       :name="name"
       autocomplete="username"
-      @input="$emit('input', $event.target.value)"
+      v-model="newValue"
       @keydown.enter="enter"
       placeholder=" "
     />
+      <!-- @input="$emit('input', $event.target.value)" -->
     <label>{{ title }}</label>
     <slot name="right"></slot>
     <span class="error" v-show="errors.has(name)">{{
@@ -21,6 +22,10 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'AceInput',
   props: {
+    value: {
+      type: String,
+      default: ''
+    },
     type: {
       type: String,
       default: 'text'
@@ -47,7 +52,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['login'])
+    ...mapGetters(['login']),
+    newValue: {
+      get () {
+        return this.value
+      },
+      set (value) {
+        this.$emit('input', value)
+      }
+    }
   }
 }
 </script>

@@ -1085,12 +1085,16 @@ select {
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-  padding-left: 350px;
+  /* padding-left: 350px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .footer-wrap .footer-logo {
-  position: absolute;
+  margin-right: 20px;
+  /* position: absolute;
   left: 0;
-  top: 0;
+  top: 0; */
 }
 .footer-wrap .nie-logo {
   display: inline-block;
@@ -1798,6 +1802,7 @@ background-position:-1404px -255px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  margin-bottom: 70px;
 }
 .slide-news .title span {
   display: inline-block;
@@ -4165,12 +4170,12 @@ background-position:-1958px -992px;
 .section-corps .corps-slide:nth-of-type(1) .kv[data-kv='2'] {
   width: 700px;
   height: 700px;
-  /* background: url(../images/corps1-kv2_8d154607.png); */
+  background: url(../images/corps1-kv2_8d154607.png);
 }
 .section-corps .corps-slide:nth-of-type(1) .kv[data-kv='3'] {
   width: 700px;
   height: 700px;
-  /* background: url(../images/corps1-kv3_ec2ba479.png); */
+  background: url(../images/corps1-kv3_ec2ba479.png);
 }
 .section-corps .corps-slide:nth-of-type(1) .switch-button[data-thumb='1'] {
   top: 50%;
@@ -4901,4 +4906,3 @@ background-position:-1865px -166px;
   margin-left: -960px;
   z-index: 9;
 }
-

@@ -30,6 +30,9 @@
                     background-color: #999;
                 }
             }
+            a {
+                text-decoration: underline;
+            }
         }
     }
     .nav{
@@ -76,7 +79,7 @@
         margin: 10px 0;
     }
     .userAuth  {
-        padding: 40px;
+        padding:0 40px 40px;
         ul {
             border-top: 1px solid #ddd;
         }
@@ -132,19 +135,47 @@
             background-position: left -20px;
         }
     }
+    .contact {
+        padding: 0 75px 40px;
+        h4 {
+            position: relative;
+            padding-left: 25px;
+            font-size: 18px;
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 8px;
+                height: 8px;
+                border: 3px solid #e5004f;
+                border-radius: 10px;
+            }
+        }
+        .tel {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            strong {
+                font-size: 22px;
+                color: #e5004f;
+            }
+        }
+    }
 </style>
 
 <template>
   <div class="userPage">
       <div class="top">
           <div class="nav">
-              <router-link to="/#index">Trang Chủ</router-link>
+              <router-link to="/">Trang Chủ</router-link>
               <router-link to="/user">Trung tâm cá nhân</router-link>
           </div>
           <div class="topUser">
-              <!-- {{userInfo.nickname}} -->
-              <span>xin chào，123428653@qq.com</span>
-              <a href="javascript:;">Đăng xuất</a>
+              <span>xin chào，{{userInfo.nickname}}</span>
+              <a href="javascript:;" @click="logout">Đăng xuất</a>
           </div>
       </div>
       <div class="main">
@@ -181,7 +212,7 @@
                             <div>
                                 <h4>认证手机</h4>
                                 <div><i class="checkIcon wangningIcon"></i><span>未绑定</span></div>
-                                <p>可用于加固账号安全，并获得快速找回密码等特有功能服务</p>
+                                <p>可用于加固账号安全，并获得快速找回密码等功能服务</p>
                             </div>
                         </div>
                         <div class="userAuthInfoOption">
@@ -192,9 +223,9 @@
                         <div class="userAuthInfo">
                             <i class="icon iconEmil"></i>
                             <div>
-                                <h4>认证手机</h4>
+                                <h4>认证邮箱</h4>
                                 <div><i class="checkIcon"></i><span>已绑定</span></div>
-                                <p>可用于加固账号安全，并获得快速找回密码等特有功能服务</p>
+                                <p>可用于密码找回，资料查询信息</p>
                             </div>
                         </div>
                         <div class="userAuthInfoOption">
@@ -203,12 +234,17 @@
                     </li>
                 </ul>
             </div>
+            <div class="contact">
+                <h4>联系客服热线</h4>
+                <div class="tel">全国24小时热：<strong>95105222</strong></div>
+            </div>
           </div>
       </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { getStorage } from '@/utils/storage'
 console.log(getStorage('userInfo'))
 export default {
@@ -217,6 +253,12 @@ export default {
       userInfo: getStorage('userInfo')
     }
   },
-  methods: {}
+  methods: {
+    ...mapActions(['logoutAction']),
+    logout () {
+      this.logoutAction()
+      this.$router.push('/')
+    }
+  }
 }
 </script>

@@ -5,6 +5,7 @@ import store from './store'
 import VeeValidate, { Validator } from 'vee-validate'
 import Login from '@/components/Login'
 import AceInput from '@/components/Ace-Input'
+import Message from '@/components/Message'
 import vi from 'vee-validate/dist/locale/vi'
 // import '@/assets/css/swiper.4.1.6.css'
 import '@/assets/css/galleryV2.css'
@@ -23,6 +24,7 @@ const config = {
 Vue.use(VeeValidate, config)
 Vue.component('login', Login)
 Vue.component('ace-input', AceInput)
+Vue.component('message', Message)
 Vue.use(VueAwesomeSwiper /* { default options with global component } */)
 
 new Vue({

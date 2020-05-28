@@ -27,6 +27,15 @@ export function login (data) {
   })
 }
 
+// 忘记密码
+export function forgot (data) {
+  return http({
+    url: '/api/gi/pub/web/reset',
+    method: 'POST',
+    data
+  })
+}
+
 // 绑定手机号码
 export function bindTel (data) {
   return http({

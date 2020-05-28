@@ -49,8 +49,10 @@ export function removeStorage (key) {
     console.log(error)
   }
 }
-
+export function getToken () {
+  return getStorage('Authorization')
+}
 export function removeToken () {
   removeStorage('Authorization')
-  removeStorage('uuid')
+  removeStorage('userInfo')
 }

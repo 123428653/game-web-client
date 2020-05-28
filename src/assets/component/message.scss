@@ -1,0 +1,68 @@
+
+
+
+.el-message {
+    min-width: 380px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ebeef5;
+    position: fixed;
+    left: 50%;
+    top: 180px;
+    transform: translateX(-50%);
+    background-color: #edf2fc;
+    transition: opacity .3s,transform .4s,top .4s;
+    overflow: hidden;
+    padding: 15px 15px 15px 20px;
+    display: flex;
+    align-items: center;
+    z-index: 99;
+  }
+  
+  .el-message--error {
+    background-color: #fef0f0;
+    border-color: #fde2e2;
+    .el-message__icon {
+        background-image: url(../images/error_icon.png);
+    }
+  }
+  .el-message--success {
+    background-color: #f0f9eb;
+    border-color: #e1f3d8;
+    .el-message__icon {
+        background-image: url(../images/pro-success.png);
+    }
+  }
+  .el-message--error .el-message__content {
+    color: #f56c6c
+  }
+  .el-message--success .el-message__content {
+    color: #67c23a
+  }
+  
+  .el-message__icon {
+    margin-right: 10px;
+    display: inline-block;
+    width:16px;
+    height: 16px;
+    background-size: 16px;
+  }
+  
+  .el-message__content {
+    padding: 0;
+    padding-right: 20px;
+    font-size: 14px;
+    line-height: 1.2
+  }
+  .el-message__closeBtn {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #c0c4cc;
+    width: 14px;
+    height: 14px;
+    background-image: url(../images/close.png);
+    background-size: 14px;
+}

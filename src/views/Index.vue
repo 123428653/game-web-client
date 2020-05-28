@@ -23,12 +23,12 @@
           <span>Media</span>
         </div>
       </div>
-      <router-link :to="token ? '/user' : '/'" class="nav-link">
+      <!-- <router-link :to="token ? '/user' : '/'" class="nav-link">
         {{token ? 'Trung tâm cá nhân' : 'đăng nhập'}}
-      </router-link>
-      <!-- <a href="https://survey.163.com/htmls/2zqc23/paper.html" class="nav-link">
+      </router-link> -->
+      <a href="javascript:;" @click="goAnLogin" class="nav-link">
         {{token ? 'Trung tâm cá nhân' : 'đăng nhập'}}
-      </a> -->
+      </a>
     </div>
     <!-- <swiper id="J-page" class="swiper-container swiper-container-out swiper-container-vertical"> -->
     <swiper id="J-page" :options="swiperOption" class="swiper-container-out">
@@ -72,7 +72,7 @@
                 <div class="btn-wrap">
                   <a
                     href="javascript:;"
-                    @click="showLoginAction(true)"
+                    @click="goAnLogin"
                     class="btn-yuyue BX_Sprite4"
                   ></a>
                 </div>
@@ -87,7 +87,7 @@
                 <h2 class="title">
                   <span>Tin Tức</span>
                 </h2>
-                <div class="tab-wrap">
+                <!-- <div class="tab-wrap">
                   <div class="tab-item tab-active">
                     <span>Tất Cả</span>
                   </div>
@@ -97,7 +97,7 @@
                   <div class="tab-item">
                     <span>Sự Kiện</span>
                   </div>
-                </div>
+                </div> -->
                 <div class="line"></div>
                 <div class="news-list-wrap">
                   <div class="news-wrap news-active" id="js-news-list">
@@ -1019,15 +1019,18 @@
                                 </div>
                                 <div class="kv-wrap">
                                   <span class="circle"></span>
-                                  <div class="kv kv10"></div>
+                                  <div class="kv kv10" :class="weapon.childresTab.index === 1 ? 'kv-f' : ''"></div>
                                 </div>
                                 <div class="btn-switch-wrap">
                                   <span
-                                    class="btn-switch switch-active"
-                                    data-gender="m"
-                                    data-text="男"
+                                    v-for="(item,index) in weapon.childresTab.arr"
+                                    :key="item"
+                                    class="btn-switch"
+                                    :class="{'switch-active': index === weapon.childresTab.index}"
+                                    @click="weapon.childresTab.index = index"
                                   ></span>
-                                  <span class="btn-switch" data-gender="f" data-text="女"></span>
+                                  <!-- <span class="btn-switch switch-active" data-gender="m" data-text="男"></span>
+                                  <span class="btn-switch" data-gender="f" data-text="女"></span> -->
                                 </div>
                               </div>
                             </swiper-slide>
@@ -1255,6 +1258,12 @@
                                       <div class="switch-button" data-thumb="3">
                                         <p class="kv-name">Cuộc tấn công của Chuck</p>
                                       </div>
+                                      <!-- <div class="switch-button" @click="corpsChildernTab(0, corps.corpsTabArray[0].childrenIndex === 1 ? 2 : 1)" data-thumb="2">
+                                        <p class="kv-name">{{corps.corpsTabArray[0].childrenIndex === 1 ? 'Baekwol Sanmin' : 'Cystosis'}}</p>
+                                      </div>
+                                      <div class="switch-button" @click="corpsChildernTab(0, corps.corpsTabArray[0].childrenIndex === 1 ? 3 : 1)" data-thumb="3">
+                                        <p class="kv-name">{{corps.corpsTabArray[0].childrenIndex === 1 ? 'Baekwol Sanmin' : 'Cuộc tấn công của Chuck'}}</p>
+                                      </div> -->
                                     </div>
                                   </div>
                                 </em>
@@ -2726,8 +2735,8 @@
               <div class="footer-wrap">
                 <div class="footer-content">
                   <div class="footer-logo">
-                    <a target="_blank" class="nie-logo nie-logo1"></a>
-                    <a target="_blank" class="nie-logo nie-logo2"></a>
+                    <!-- <a target="_blank" class="nie-logo nie-logo1"></a> -->
+                    <!-- <a target="_blank" class="nie-logo nie-logo2"></a> -->
                     <a target="_blank" class="nie-logo nie-logo3"></a>
                   </div>
                   <div class="footer-text">
@@ -2770,18 +2779,19 @@
       @close="close()"
       :isShow="showLogin"
     />
+    <message :msg="msg.tip" :show="msg.showTip" :type="msg.type" @close="showTipMsgAction(false)" />
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import { getStorage } from '@/utils/storage'
+import { getToken } from '@/utils/storage'
 export default {
   name: 'index',
   data () {
     const _this = this
     return {
-      token: getStorage('Authorization'),
+      token: getToken(),
       swiperOption: {
         allowTouchMove: false,
         direction: 'vertical',
@@ -2883,7 +2893,32 @@ export default {
       },
       corps: {
         currentIndex: 1,
-        corpsTabArray: ['Khiên nhỏ', '긴 자루류 부대', 'Túi dài', 'Quân đội', 'kỵ sĩ', 'Giáp'],
+        corpsTabArray: [
+          {
+            name: 'Khiên nhỏ',
+            childrenIndex: 1
+          },
+          {
+            name: '긴 자루류 부대',
+            childrenIndex: 1
+          },
+          {
+            name: 'Túi dài',
+            childrenIndex: 1
+          },
+          {
+            name: 'Quân đội',
+            childrenIndex: 1
+          },
+          {
+            name: 'kỵ sĩ',
+            childrenIndex: 1
+          },
+          {
+            name: 'Giáp',
+            childrenIndex: 1
+          }],
+        childrenTabIndex: 0,
         options: {
           effect: 'fade',
           fadeEffect: {
@@ -2897,7 +2932,7 @@ export default {
             el: '#J-pagination-corps',
             clickable: !0,
             renderBullet: function (e, t) {
-              return '<div class="' + t + '"><span>' + _this.corps.corpsTabArray[e] + '</span></div>'
+              return '<div class="' + t + '"><span>' + _this.corps.corpsTabArray[e].name + '</span></div>'
             }
           },
           on: {
@@ -2910,6 +2945,10 @@ export default {
       },
       weapon: {
         currentIndex: '01',
+        childresTab: {
+          arr: ['m', 'f'],
+          index: 0
+        },
         options: {
           effect: 'fade',
           fadeEffect: {
@@ -3044,11 +3083,37 @@ export default {
       }
     }
   },
+  mounted () {
+    this.corpsChildernTab()
+    if (this.$route.query.go && !this.token) {
+      this.showLoginAction(true)
+    }
+  },
   computed: {
-    ...mapGetters(['showLogin', 'cssShow'])
+    ...mapGetters(['showLogin', 'cssShow', 'msg'])
   },
   methods: {
-    ...mapActions(['showLoginAction', 'showForgotAction']),
+    ...mapActions(['showLoginAction', 'showForgotAction', 'showTipMsgAction']),
+    goAnLogin () {
+      if (this.token) {
+        this.$router.push('/user')
+      } else {
+        this.showLoginAction(true)
+      }
+    },
+    corpsChildernTab () {
+      const $ = window.$
+      // this.corps.corpsTabArray[parentIndex].childrenIndex = index
+      window.$('#J-corps').on('click', '.switch-button-wrap .switch-button', function () {
+        var e = $(this).attr('data-thumb')
+        var t = $(this).closest('.kv-wrap').find('.kv')
+        var i = t.attr('data-kv')
+        var a = t.data('name' + i)
+        $(this).attr('data-thumb', i).find('.kv-name').text(a)
+        t.attr('data-kv', e)
+        $(this).closest('.slide-content').find('.intro-wrap').removeClass('corps-intro-show').eq(e - 1).addClass('corps-intro-show')
+      })
+    },
     close () {
       this.showLoginAction(false)
       this.showForgotAction(false)

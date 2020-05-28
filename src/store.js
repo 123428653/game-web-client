@@ -4,13 +4,14 @@ import {
   registerSendCode,
   register,
   login,
+  forgot,
   bindTel,
   telLogin,
   senCodeLogin,
   telCodeLogin
 } from '@/apis'
 import { sha1 } from '@/utils'
-import { setStorage } from '@/utils/storage'
+import { setStorage, removeToken } from '@/utils/storage'
 
 Vue.use(Vuex)
 
@@ -20,7 +21,13 @@ export default new Vuex.Store({
     showLogin: false,
     cssForgotShow: false,
     forgotShow: false,
-    loginTabs: ['Login', 'Register'],
+    _timer: null,
+    msg: {
+      type: '',
+      tip: '',
+      showTip: false
+    },
+    loginTabs: ['Đăng nhập', 'Đăng ký'],
     loginActiveIndex: 0,
     register: {
       email: '',
@@ -32,7 +39,7 @@ export default new Vuex.Store({
       isLoading: false
     },
     login: {
-      email: '111',
+      email: '',
       password: '',
       isLoading: false
     },
@@ -47,6 +54,7 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    msg: state => state.msg,
     cssShow: state => state.cssShow,
     showLogin: state => state.showLogin,
     cssForgotShow: state => state.cssForgotShow,
@@ -58,6 +66,19 @@ export default new Vuex.Store({
     forgot: state => state.forgot
   },
   mutations: {
+    updateTip (state, { tip, showTip, type }) {
+      state.msg.tip = tip
+      state.msg.type = type
+      state.msg.showTip = showTip
+      clearTimeout(state._timer)
+      state._timer = setTimeout(() => {
+        state.msg.showTip = !showTip
+      }, 3000)
+    },
+    updateIsShowTip (state, showTip) {
+      state.msg.showTip = showTip
+      clearTimeout(state._timer)
+    },
     updateloginActiveIndex (state, index) {
       state.loginActiveIndex = index
     },
@@ -98,9 +119,24 @@ export default new Vuex.Store({
     },
     updateTime (state, { type, time }) {
       state[type].time = time
+    },
+    clearVals (state, { type, errors }) {
+      state[type].email = ''
+      state[type].code = ''
+      state[type].password = ''
+      state[type].isSendCode = false
+      state[type].sendCodeLoading = false
+      setTimeout(() => {
+        errors.forEach(item => {
+          item.errors.clear()
+        })
+      }, 300)
     }
   },
   actions: {
+    showTipMsgAction ({ commit }, status) {
+      commit('updateIsShowTip', status)
+    },
     loginActiveIndexAction ({ commit }, index) {
       commit('updateloginActiveIndex', index)
     },
@@ -129,10 +165,10 @@ export default new Vuex.Store({
         username: email // (String)邮箱
       }).then((res) => {
         commit('updateLoading', { type: 'register', status: false })
-        const { token, tokenExpire, uuid, nickname, avatar, gender } = res.data
         if (res.status !== 200) {
-          alert(res.message)
+          commit('updateTip', { tip: res.message, showTip: true, type: 'error' })
         } else {
+          const { token, tokenExpire, uuid, nickname, avatar, gender } = res.data
           setStorage('Authorization', token, tokenExpire)
           setStorage('userInfo', { uuid, nickname, avatar, gender }, tokenExpire)
           // 跳转~~
@@ -155,10 +191,10 @@ export default new Vuex.Store({
         username: email // (String)email/phone：账号，如果是email登录，这里就是email；如果是phone登录，这里是
       }).then(res => {
         commit('updateLoading', { type: 'login', status: false })
-        const { token, tokenExpire, uuid, nickname, avatar, gender } = res.data
         if (res.status !== 200) {
-          alert(res.message)
+          commit('updateTip', { tip: res.message, showTip: true, type: 'error' })
         } else {
+          const { token, tokenExpire, uuid, nickname, avatar, gender } = res.data
           setStorage('Authorization', token, tokenExpire)
           setStorage('userInfo', { uuid, nickname, avatar, gender }, tokenExpire)
           // 跳转~~
@@ -168,11 +204,11 @@ export default new Vuex.Store({
         console.log('登录成功回调')
       })
     },
-    forgotApi ({ commit, state }) {
+    forgotApi ({ commit, state, dispatch }, all) {
       const { password, code, email, isLoading } = state.forgot
       if (isLoading) return
       commit('updateLoading', { type: 'forgot', status: true })
-      register({
+      forgot({
         password: sha1(password), // (String)密码
         code, // (String)验证码
         appId: 'zhanyi', // (String)平台发放给cp的appId，如果从cp处登录，那么会返回一个sign，用于cp去验证用户的有效性
@@ -181,9 +217,14 @@ export default new Vuex.Store({
       }).then(res => {
         commit('updateLoading', { type: 'forgot', status: false })
         if (res.status !== 200) {
-          alert(res.message)
+          commit('updateTip', { tip: res.message, showTip: true, type: 'error' })
+          // alert(res.message)
         } else {
+          commit('updateTip', { tip: 'Đặt lại thành công, vui lòng đăng nhập', showTip: true, type: 'success' })
           commit('updateloginActiveIndex', 0)
+          console.log('forgotApi', all)
+          commit('clearVals', { type: 'forgot', errors: all })
+          dispatch('backLoginAction')
         }
         console.log('重置密码回调')
       })
@@ -193,7 +234,7 @@ export default new Vuex.Store({
       commit('updateSendCodeLoading', { type, status: true })
       registerSendCode({
         channel: 'email', // (String)获取code的 渠道。email/phone
-        type, // (String)获取code的 用途来下。reset(重置需要的验证码)/register(注册需要的验证码)/login(登录需要的验证码)
+        type: type === 'forgot' ? 'reset' : type, // (String)获取code的 用途来下。reset(重置需要的验证码)/register(注册需要的验证码)/login(登录需要的验证码)
         email
       }).then(res => {
         commit('updateSendCodeLoading', { type, status: false })
@@ -211,10 +252,11 @@ export default new Vuex.Store({
             }
           }, 1000)
         } else {
-          alert(res.message)
+          commit('updateTip', { tip: res.message, showTip: true, type: 'error' })
           commit('updateIsSendCode', { type, status: false })
         }
       }).catch(() => {
+        commit('updateTip', { tip: 'Lỗi máy chủ', showTip: true, type: 'error' })
         commit('updateSendCodeLoading', { type, status: false })
         commit('updateIsSendCode', { type, status: false })
       })
@@ -241,17 +283,6 @@ export default new Vuex.Store({
         console.log('绑定手机号码成功回调')
       })
     },
-    senCodeLoginApi () {
-      senCodeLogin({
-        phone: '13510162725', // (String)电话号码，如果channel是email，那么为空，不能包含区号(diaCode)
-        channel: 'phone', // (String)获取code的 渠道。email/phone
-        diaCode: '86', // (String)区号，如果是email，那么为空;86或者+86都可以
-        type: 'loginAndRegister', // (String)获取code的 用途来下。reset(重置需要的验证码)/register(注册需要的验证码)/loginAndRegister(登录或注册需要的验证码)/bind(绑定需要的验证码)/unbind(解绑需要的验证码)
-        email: null // 电话号码，如果channel是phone，那么为空
-      }).then(() => {
-        console.log('绑定手机号码成功回调')
-      })
-    },
     telCodeLoginApi () {
       telCodeLogin({
         code: '827725', // (String)email/phone：验证码;
@@ -264,26 +295,32 @@ export default new Vuex.Store({
         console.log('绑定手机号码成功回调')
       })
     },
+    senCodeLoginApi () {
+      senCodeLogin({
+        phone: '13510162725', // (String)电话号码，如果channel是email，那么为空，不能包含区号(diaCode)
+        channel: 'phone', // (String)获取code的 渠道。email/phone
+        diaCode: '86', // (String)区号，如果是email，那么为空;86或者+86都可以
+        type: 'loginAndRegister', // (String)获取code的 用途来下。reset(重置需要的验证码)/register(注册需要的验证码)/loginAndRegister(登录或注册需要的验证码)/bind(绑定需要的验证码)/unbind(解绑需要的验证码)
+        email: null // 电话号码，如果channel是phone，那么为空
+      }).then(() => {
+        console.log('绑定手机号码成功回调')
+      })
+    },
     sendCodeAcstion ({ dispatch }, { vlidateEmail, email, type }) {
       vlidateEmail().then(status => {
         if (!status) {
-          console.log('邮箱不对')
           return
         }
         dispatch('sendCodeApi', { email, type })
-        console.log('通过啦')
       })
     },
     registerAction ({ dispatch }, { all, goUser }) {
-      console.log(11)
       Promise.all(all).then(result => {
         // 有一个组件未通过，就提示错误信息
         if (result.indexOf(false) > -1) {
-          console.log('注册全部校验未通过')
           return
         }
         dispatch('registerApi', { goUser })
-        console.log('注册全部校验通过')
       })
     },
     loginAction ({ dispatch }, { all, goUser }) {
@@ -291,23 +328,25 @@ export default new Vuex.Store({
       Promise.all(all).then(result => {
         // 有一个组件未通过，就提示错误信息
         if (result.indexOf(false) > -1) {
-          console.log('全部校验未通过')
           return
         }
         dispatch('loginApi', { goUser })
-        console.log('全部校验通过')
       })
     },
     forgotAction ({ dispatch }, all) {
-      Promise.all(all).then(result => {
+      const emailValidtor = all[0].vlidate()
+      const codeValidtor = all[1].vlidate()
+      const passwordValidtor = all[2].vlidate()
+      Promise.all([emailValidtor, codeValidtor, passwordValidtor]).then(result => {
         // 有一个组件未通过，就提示错误信息
         if (result.indexOf(false) > -1) {
-          console.log('全部校验未通过')
           return
         }
-        dispatch('forgotApi')
-        console.log('全部校验通过')
+        dispatch('forgotApi', all)
       })
+    },
+    logoutAction () {
+      removeToken()
     }
   }
 })

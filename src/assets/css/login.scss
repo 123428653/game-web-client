@@ -15,10 +15,11 @@
   width: 100%;
 }
 .button-primary {
-  background: #ef4406;
+  background: rgb(192,49,50);
   color: #fff;
-  border-color: #ef4406;
+  border-color: rgb(192,49,50);
 }
+.jLoginBtn,
 .registerBtn {
   height: 46px;
 }
@@ -88,7 +89,7 @@
   }
   .popTab a.active{
     border-color: #dee2e6 #dee2e6 #fff !important;
-    color: #ef4406;
+    color: rgb(192,49,50);
   }
   .popTab a:hover {
     border-color: #e9ecef #e9ecef #dee2e6;
@@ -126,12 +127,12 @@
     font-size: 16px;
   }
   .form-group input:focus + label{
-    color: #ef4406;
+    color: #333;
     font-size: 12px;
     transform: translate(0, 0);
   }
   .form-group input:focus {
-    border-color: #ef4406;
+    border-color: #333;
     outline: none;
   }
   .button.getCodeBtn,
@@ -173,6 +174,9 @@
   .forgotPassword,
   .backLogin {
     padding-top: 24px;
+    a {
+      color: #333;
+    }
   }
   .passwordIcon {
     position: absolute;
@@ -345,7 +349,7 @@
     }
     
   .form-group input:focus + label{
-    color: #ef4406;
+    color: #333;
     font-size: 12px;
     transform: translate(0, 0);
   }
