@@ -189,7 +189,7 @@
                     <div>
                         <div class="name">
                             <span>账号：</span>
-                            <strong>123428653@qq.com</strong>
+                            <strong>{{userInfo.nickname}}</strong>
                         </div>
                         <div class="nameRight">
                             <span>余额: xxx</span>
@@ -216,7 +216,7 @@
                             </div>
                         </div>
                         <div class="userAuthInfoOption">
-                            <a href="javascript:;">绑定手机</a>
+                            <a href="javascript:;" @click="showLoginAction(true)">绑定手机</a>
                         </div>
                     </li>
                     <li>
@@ -240,11 +240,17 @@
             </div>
           </div>
       </div>
+    <login
+        :cssShow="cssShow"
+        @close="close()"
+        :isShow="showLogin"
+        :isbindPhone="true"
+    />
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { getStorage } from '@/utils/storage'
 console.log(getStorage('userInfo'))
 export default {
@@ -253,11 +259,18 @@ export default {
       userInfo: getStorage('userInfo')
     }
   },
+  computed: {
+    ...mapGetters(['showLogin', 'cssShow', 'msg'])
+  },
   methods: {
-    ...mapActions(['logoutAction']),
+    ...mapActions(['logoutAction', 'showLoginAction', 'showForgotAction']),
     logout () {
       this.logoutAction()
       this.$router.push('/')
+    },
+    close () {
+      this.showLoginAction(false)
+      this.showForgotAction(false)
     }
   }
 }

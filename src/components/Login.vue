@@ -1,6 +1,7 @@
 <template>
   <div>
     <div
+       v-if="!isbindPhone"
       class="dialogModal j_loginPop"
       :style="{ display: cssShow ? 'block' : 'none' }"
       :class="isShow ? 'fade-down' : ''"
@@ -45,6 +46,7 @@
                 ref="loginPassword"
                 name="password"
                 :validateRule="'required|min:6|max:16'"
+                @enter="validateBeforeSubmit"
               >
                 <div
                   slot="right"
@@ -190,6 +192,7 @@
         </div>
       </div>
     </div>
+
     <!-- forgotPassword -->
     <div
       class="dialogModal j_forgotPasswordPop"
@@ -307,6 +310,91 @@
         </div>
       </div>
     </div>
+
+    <div
+      v-if="isbindPhone"
+      class="dialogModal bindPhone"
+      :style="{ display: cssShow ? 'block' : 'none' }"
+      :class="isShow ? 'fade-down' : ''"
+    >
+      <div class="mask"></div>
+      <div class="dialogModalConent">
+        <div class="popHeader">
+          <div class="popTab">
+            <div class="tabItem">
+              <a href="javascript:;" class="active">绑定手机</a>
+            </div>
+          </div>
+          <a
+            href="javascript:;"
+            class="jsLoginClose loginClose"
+            style="font-size: 24px;"
+            @click="close"
+          ></a>
+        </div>
+        <div class="popBody">
+          <div class="tabContent active">
+            <div class="inputs">
+              <ace-input
+                title="Email của bạn"
+                type="number"
+                v-model.trim="bind.tel"
+                ref="bindTel"
+                name="tel"
+                :validateRule="'required|numeric'"
+              >
+                <div slot="left" class="diaCode">
+                  <select>
+                    <option value="86">+86</option>
+                    <option value="86">+86</option>
+                    <option value="86">+86</option>
+                    <option value="86">+86</option>
+                    <option value="86">+86</option>
+                  </select>
+                </div>
+              </ace-input>
+            </div>
+            <div class="opt">
+              <button
+                class="button button-block button-primary registerBtn"
+                style="display: flex; justify-content:center; align-items:center;"
+                @click="validateBind"
+              >
+                <span
+                  style="height: 22px;margin-bottom: 0;margin-right: 5px;"
+                  class="circularBox"
+                  v-show="bind.isLoading"
+                >
+                  <svg
+                    style="width: 22px;height:22px;"
+                    viewBox="25 25 50 50"
+                    class="circular"
+                  >
+                    <circle
+                      style="stroke:#fff;"
+                      cx="50"
+                      cy="50"
+                      r="20"
+                      fill="none"
+                      class="path"
+                    ></circle>
+                  </svg>
+                </span>
+                <span>确认绑定</span>
+              </button>
+            </div>
+            <div class="backLogin">
+              <a
+                href="javascript:;"
+                @click="showForgotAction(true)"
+                class="j_backLogin"
+                >Quay lại Đăng nhập</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -321,6 +409,10 @@ export default {
       default: false
     },
     isShow: {
+      type: Boolean,
+      default: false
+    },
+    isbindPhone: {
       type: Boolean,
       default: false
     }
@@ -339,7 +431,8 @@ export default {
       'forgotShow',
       'login',
       'register',
-      'forgot'
+      'forgot',
+      'bind'
     ])
   },
   methods: {
@@ -350,6 +443,7 @@ export default {
       'loginAction',
       'registerAction',
       'forgotAction',
+      'bindAction',
       'sendCodeAcstion'
     ]),
     test () {
@@ -406,6 +500,10 @@ export default {
         forgotCode,
         forgotPassword
       ])
+    },
+    validateBind () {
+      const bindTel = this.$refs.bindTel
+      this.bindAction(bindTel)
     },
     close () {
       this.$refs.forgotEmail.errors.clear()

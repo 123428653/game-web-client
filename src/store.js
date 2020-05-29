@@ -51,6 +51,15 @@ export default new Vuex.Store({
       isSendCode: false,
       sendCodeLoading: false,
       isLoading: false
+    },
+    bind: {
+      email: '',
+      code: '',
+      password: '',
+      time: 30,
+      isSendCode: false,
+      sendCodeLoading: false,
+      isLoading: false
     }
   },
   getters: {
@@ -63,7 +72,8 @@ export default new Vuex.Store({
     forgotShow: state => state.forgotShow,
     register: state => state.register,
     login: state => state.login,
-    forgot: state => state.forgot
+    forgot: state => state.forgot,
+    bind: state => state.bind
   },
   mutations: {
     updateTip (state, { tip, showTip, type }) {
@@ -334,15 +344,25 @@ export default new Vuex.Store({
       })
     },
     forgotAction ({ dispatch }, all) {
-      const emailValidtor = all[0].vlidate()
-      const codeValidtor = all[1].vlidate()
-      const passwordValidtor = all[2].vlidate()
-      Promise.all([emailValidtor, codeValidtor, passwordValidtor]).then(result => {
+      const vlidates = all.map(item => {
+        return item.vlidate()
+      })
+      Promise.all(vlidates).then(result => {
         // 有一个组件未通过，就提示错误信息
+        console.log(result)
         if (result.indexOf(false) > -1) {
           return
         }
         dispatch('forgotApi', all)
+      })
+    },
+    bindAction ({ dispatch }, tel) {
+      Promise.all([tel.vlidate()]).then(result => {
+        // 有一个组件未通过，就提示错误信息
+        if (result.indexOf(false) > -1) {
+          return
+        }
+        dispatch('bindTelApi', tel)
       })
     },
     logoutAction () {

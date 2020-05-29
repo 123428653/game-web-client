@@ -1,4 +1,6 @@
 <template>
+<div class="inputWrap">
+  <slot name="left"></slot>
   <div class="form-group">
     <input
       v-validate="validateRule"
@@ -16,6 +18,7 @@
       errors.first(name)
     }}</span>
   </div>
+</div>
 </template>
 <script type="text/javascript">
 import { mapGetters } from 'vuex'
